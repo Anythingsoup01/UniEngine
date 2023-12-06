@@ -11,8 +11,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "UniEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "UniEngine/vendor/Glad/include"
 
 include "UniEngine/vendor/GLFW"
+include "UniEngine/vendor/GLAD"
 
 project "UniEngine"
 	location "UniEngine"
@@ -33,11 +35,13 @@ project "UniEngine"
 	includedirs{
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links {
 		"GLFW",
+		"Glad",
 		"opengl32.lib",
 		"dwmapi.lib"
 	}
@@ -50,7 +54,8 @@ project "UniEngine"
 		defines
 		{
 			"UE_PLATFORM_WINDOWS",
-			"UE_BUILD_DLL"
+			"UE_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

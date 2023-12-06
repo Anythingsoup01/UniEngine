@@ -5,6 +5,8 @@
 #include "UniEngine/Events/KeyEvents.h"
 #include "UniEngine/Events/MouseEvents.h"
 
+#include "glad/glad.h"
+
 namespace UE {
 	static bool s_GLFWInitialized = false;
 
@@ -35,12 +37,16 @@ namespace UE {
 		if (!s_GLFWInitialized) {
 			int success = glfwInit();
 			UE_CORE_ASSERT(success, "Cound not initialize GLFW!");
-			glfwSetErrorCallback(GLFWErrorCallback);
+			//glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		//UE_CORE_ASSERT(status, "Failed to initialize GLAD");
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

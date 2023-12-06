@@ -3,11 +3,17 @@
 class ExampleLayer : public UE::Layer {
 public:
 	ExampleLayer()
-		: Layer("Example") {}
+		: Layer("Example")
+	{
+	}
 
+	void OnUpdate() override
+	{
+		UE_INFO("ExampleLayer::Update");
+	}
 
 	void OnEvent(UE::Event& event) override {
-		UE_CORE_WARN("{0}", event);
+		UE_TRACE("{0}", event);
 	}
 };
 

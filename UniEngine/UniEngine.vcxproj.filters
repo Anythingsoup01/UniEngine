@@ -36,6 +36,12 @@
     <ClInclude Include="src\UniEngine\Events\MouseEvents.h">
       <Filter>UniEngine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\UniEngine\Layer.h">
+      <Filter>UniEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\LayerStack.h">
+      <Filter>UniEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\UniEngine\Log.h">
       <Filter>UniEngine</Filter>
     </ClInclude>
@@ -44,8 +50,6 @@
     </ClInclude>
     <ClInclude Include="src\UniHeaders.h" />
     <ClInclude Include="src\uepch.h" />
-    <ClInclude Include="src\UniEngine\LayerStack.h" />
-    <ClInclude Include="src\UniEngine\Layer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\WindowsWindow.cpp">
@@ -54,11 +58,15 @@
     <ClCompile Include="src\UniEngine\Application.cpp">
       <Filter>UniEngine</Filter>
     </ClCompile>
+    <ClCompile Include="src\UniEngine\Layer.cpp">
+      <Filter>UniEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\LayerStack.cpp">
+      <Filter>UniEngine</Filter>
+    </ClCompile>
     <ClCompile Include="src\UniEngine\Log.cpp">
       <Filter>UniEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\uepch.cpp" />
-    <ClCompile Include="src\UniEngine\LayerStack.cpp" />
-    <ClCompile Include="src\UniEngine\Layer.cpp" />
   </ItemGroup>
 </Project>

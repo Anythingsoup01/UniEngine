@@ -35,7 +35,7 @@ namespace UE {
 #define UE_WARN(...)            ::UE::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define UE_INFO(...)            ::UE::Log::GetClientLogger()->info(__VA_ARGS__)
 
-/*#define UE_TRACE(...)            ::UE::Log::GetClientLogger()->trace(__VA_ARGS__)*/
+#define UE_TRACE(...)            ::UE::Log::GetClientLogger()->trace(__VA_ARGS__)
 // Broken ^
 
 
