@@ -1,9 +1,7 @@
 #pragma once
-
+#include "uepch.h"
 #include "UniEngine/Core.h"
 
-#include <string>
-#include <functional>
 
 namespace UE {
 	// Solid
