@@ -17,7 +17,7 @@ namespace UE {
 		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "WindowResizeEvent: " << m_Width << "x, " << m_Height << "y";
-			ss.str();
+			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(WindowResize)

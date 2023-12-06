@@ -5,7 +5,7 @@
 #include <sstream>
 
 namespace UE {
-
+	// Solid
 	class UE_API KeyEvent : public Event {
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -16,11 +16,11 @@ namespace UE {
 			: m_KeyCode(keycode) {}
 		int m_KeyCode;
 	};
-
+	// Solid
 	class UE_API KeyPressedEvent : public KeyEvent {
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
-			:KeyEvent(keycode), m_RepeatCount(repeatCount) {}
+			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 
 		inline int GetRepeatCount() const { return m_RepeatCount; }
 
@@ -34,11 +34,11 @@ namespace UE {
 	private:
 		int m_RepeatCount;
 	};
-
+	// Solid
 	class UE_API KeyReleasedEvent : public KeyEvent {
 	public:
 		KeyReleasedEvent(int keycode)
-			:KeyEvent(keycode) {}
+			: KeyEvent(keycode) {}
 
 		std::string ToString() const override {
 			std::stringstream ss;

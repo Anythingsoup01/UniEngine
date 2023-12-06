@@ -6,7 +6,7 @@
 #include <functional>
 
 namespace UE {
-
+	// Solid
 	enum class EventType {
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
@@ -14,7 +14,7 @@ namespace UE {
 		KeyPressed, KeyReleased,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
-
+	// Solid
 	enum EventCategory {
 		None = 0,
 		EventCategoryApplication = BIT(0),
@@ -29,7 +29,7 @@ namespace UE {
 								virtual const char* GetName() const override { return #type; }
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
-
+	// Solid
 	class UE_API Event {
 		friend class EventDispatcher;
 	public:
@@ -44,14 +44,17 @@ namespace UE {
 	protected:
 		bool m_Handled = false;
 	};
-
+	// Solid
 	class EventDispatcher
 	{
 		template<typename T>
 		using EventFn = std::function<bool(T&)>;
 	public:
 		EventDispatcher(Event& event)
-			: m_Event(event) {}
+			: m_Event(event) 
+		{
+		}
+
 		template<typename T>
 		bool Dispatch(EventFn<T> func) {
 			if (m_Event.GetEventType() == T::GetStaticType()) {
@@ -64,7 +67,5 @@ namespace UE {
 		Event& m_Event;
 	};
 
-	inline std::ostream& operator<<(std::ostream& os, const Event& e) {
-		return os << e.ToString();
-	}
+	inline std::ostream& operator<<(std::ostream& os, const Event& e) { return os << e.ToString(); }
 }

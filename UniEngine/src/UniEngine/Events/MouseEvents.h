@@ -5,7 +5,7 @@
 #include <sstream>
 
 namespace UE {
-
+	// Solid
 	class UE_API MouseMovedEvent : public Event {
 
 	public:
@@ -18,7 +18,7 @@ namespace UE {
 		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "MouseMovedEvent: " << m_MouseX << "x, " << m_MouseY << "y";
-			ss.str();
+			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(MouseMoved)
@@ -39,7 +39,7 @@ namespace UE {
 		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "MouseScrolledEvent: " << m_offsetX << "x, " << m_offsetY << "y";
-			ss.str();
+			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(MouseScrolled)
@@ -65,7 +65,7 @@ namespace UE {
 		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "MouseButtonPressedEvent: " << m_Button;
-			ss.str();
+			return ss.str();
 		}
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
@@ -77,7 +77,7 @@ namespace UE {
 		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "MouseButtonReleasedEvent: " << m_Button;
-			ss.str();
+			return ss.str();
 		}
 		EVENT_CLASS_TYPE(MouseButtonReleased)
 	};

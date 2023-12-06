@@ -1,5 +1,6 @@
 #pragma once
 #include "Core.h"
+#include "Events/Events.h"
 
 namespace UE {
 	class UE_API Application
