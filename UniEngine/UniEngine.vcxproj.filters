@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="UniEngine">
+      <UniqueIdentifier>{E7364F5F-53A1-03D6-9CDF-B47B0889E12A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UniEngine\Events">
+      <UniqueIdentifier>{EB38330E-D731-5260-0064-37E5ECBB316C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\UniEngine\Application.h">
+      <Filter>UniEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Core.h">
+      <Filter>UniEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\EntryPoint.h">
+      <Filter>UniEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Events\ApplicationEvents.h">
+      <Filter>UniEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Events\Events.h">
+      <Filter>UniEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Events\KeyEvents.h">
+      <Filter>UniEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Events\MouseEvents.h">
+      <Filter>UniEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Log.h">
+      <Filter>UniEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniHeaders.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\UniEngine\Application.cpp">
+      <Filter>UniEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\Log.cpp">
+      <Filter>UniEngine</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
