@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "UniEngine/Log.h"
 
 #ifdef UE_PLATFORM_WINDOWS
 #include <Windows.h>

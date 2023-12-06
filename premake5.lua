@@ -59,7 +59,11 @@ project "UniEngine"
 		}
 
 	filter "configurations:Debug"
-		defines "UE_DEBUG"
+		defines 
+		{ 
+			"UE_DEBUG",
+			"UE_ENABLE_ASSERTS"
+		}
 		symbols "On"
 
 	filter "configurations:Release"
