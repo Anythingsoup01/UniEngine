@@ -7,3 +7,6 @@
 [submodule "UniEngine/vendor/ImGui"]
 	path = UniEngine/vendor/ImGui
 	url = https://github.com/Anythingsoup01/imgui
+[submodule "UniEngine/vendor/glm"]
+	path = UniEngine/vendor/glm
+	url = https://github.com/g-truc/glm

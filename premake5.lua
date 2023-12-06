@@ -13,6 +13,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "UniEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "UniEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "UniEngine/vendor/ImGui"
+IncludeDir["glm"] = "UniEngine/vendor/glm"
 
 include "UniEngine/vendor/GLFW"
 include "UniEngine/vendor/GLAD"
@@ -31,7 +32,9 @@ project "UniEngine"
 
 	files {
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs{
@@ -39,7 +42,8 @@ project "UniEngine"
 		"%{prj.name}/src",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links {
@@ -98,7 +102,8 @@ project "Sandbox"
 
 	includedirs{
 		"UniEngine/vendor/spdlog/include",
-		"UniEngine/src"
+		"UniEngine/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links {
