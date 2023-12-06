@@ -7,14 +7,6 @@ public:
 	{
 	}
 
-	void OnUpdate() override
-	{
-		UE_INFO("ExampleLayer::Update");
-	}
-
-	void OnEvent(UE::Event& event) override {
-		UE_TRACE("{0}", event);
-	}
 };
 
 class Sandbox : public UE::Application {

@@ -45,7 +45,7 @@ namespace UE {
 		{
 			(*--it)->OnEvent(e);
 			if (e.Handled) {
-				
+				break;
 			}
 		}
 	}

@@ -47,13 +47,16 @@ namespace UE {
 		float m_offsetX, m_offsetY;
 	};
 
-	class UE_API MouseButtonEvent : public Event {
+	class UE_API MouseButtonEvent : public Event
+	{
+	public:
 		inline int GetMouseButton() const { return m_Button; }
 
-		EVENT_CLASS_CATEGORY(EventCategoryMouseButton | EventCategoryInput)
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	protected:
 		MouseButtonEvent(int button)
 			: m_Button(button) {}
+
 		int m_Button;
 	};
 
