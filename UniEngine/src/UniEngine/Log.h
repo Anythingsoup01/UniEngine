@@ -26,7 +26,7 @@ namespace UE {
 #define UE_CORE_WARN(...)       ::UE::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define UE_CORE_INFO(...)       ::UE::Log::GetCoreLogger()->info(__VA_ARGS__)
 
-/*#define UE_CORE_TRACE(...)      ::UE::Log::GetCoreLogger()->trace(__VA_ARGS__)*/
+#define UE_CORE_TRACE(...)      ::UE::Log::GetCoreLogger()->trace(__VA_ARGS__)
 // Broken ^
 
 // Client Log Error Codes
