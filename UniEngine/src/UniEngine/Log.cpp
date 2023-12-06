@@ -1,3 +1,4 @@
+#include "uepch.h"
 #include "Log.h"
 
 namespace UE {
