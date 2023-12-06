@@ -4,14 +4,26 @@
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="UniEngine">
       <UniqueIdentifier>{E7364F5F-53A1-03D6-9CDF-B47B0889E12A}</UniqueIdentifier>
     </Filter>
     <Filter Include="UniEngine\Events">
       <UniqueIdentifier>{EB38330E-D731-5260-0064-37E5ECBB316C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UniEngine\ImGui">
+      <UniqueIdentifier>{51FD3410-BD88-A2D4-C699-25C932A4FED4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3_loader.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\WindowsWindow.h">
       <Filter>Platform</Filter>
     </ClInclude>
@@ -36,6 +48,9 @@
     <ClInclude Include="src\UniEngine\Events\MouseEvents.h">
       <Filter>UniEngine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\UniEngine\ImGui\ImGuiLayer.h">
+      <Filter>UniEngine\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\UniEngine\Layer.h">
       <Filter>UniEngine</Filter>
     </ClInclude>
@@ -52,11 +67,17 @@
     <ClInclude Include="src\uepch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\WindowsWindow.cpp">
       <Filter>Platform</Filter>
     </ClCompile>
     <ClCompile Include="src\UniEngine\Application.cpp">
       <Filter>UniEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\ImGui\ImGuiLayer.cpp">
+      <Filter>UniEngine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\UniEngine\Layer.cpp">
       <Filter>UniEngine</Filter>

@@ -4,3 +4,6 @@
 [submodule "UniEngine/vendor/GLFW"]
 	path = UniEngine/vendor/GLFW
 	url = https://github.com/Anythingsoup01/glfw
+[submodule "UniEngine/vendor/ImGuiRepo"]
+	path = UniEngine/vendor/ImGuiRepo
+	url = https://github.com/Anythingsoup01/imgui
