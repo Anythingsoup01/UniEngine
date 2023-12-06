@@ -13,6 +13,9 @@
 #include <unordered_set>
 
 #include "UniEngine/Log.h"
+#include "UniEngine/KeyCodes.h"
+#include "UniEngine/MouseButtonCodes.h"
+#include "UniEngine/Input.h"
 
 #ifdef UE_PLATFORM_WINDOWS
 #include <Windows.h>

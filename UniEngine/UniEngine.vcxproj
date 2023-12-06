@@ -164,9 +164,11 @@
     <ClInclude Include="src\UniEngine\Events\MouseEvents.h" />
     <ClInclude Include="src\UniEngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\UniEngine\Input.h" />
+    <ClInclude Include="src\UniEngine\KeyCodes.h" />
     <ClInclude Include="src\UniEngine\Layer.h" />
     <ClInclude Include="src\UniEngine\LayerStack.h" />
     <ClInclude Include="src\UniEngine\Log.h" />
+    <ClInclude Include="src\UniEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\UniEngine\Window.h" />
     <ClInclude Include="src\UniHeaders.h" />
     <ClInclude Include="src\uepch.h" />
