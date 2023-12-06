@@ -9,6 +9,11 @@ workspace "UniversalEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "UniEngine/vendor/GLFW/include"
+
+include "UniEngine/vendor/GLFW"
+
 project "UniEngine"
 	location "UniEngine"
 	kind "SharedLib"
@@ -27,7 +32,14 @@ project "UniEngine"
 
 	includedirs{
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links {
+		"GLFW",
+		"opengl32.lib",
+		"dwmapi.lib"
 	}
 
 	filter "system:windows"

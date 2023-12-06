@@ -6,15 +6,15 @@
 
 
 namespace UE {
-	Application::Application() {}
+	Application::Application() 
+	{
+		m_Window = std::unique_ptr<Window>(Window::Create());
+	}
 	Application::~Application() {}
 
 	void Application::Run() {
-		MouseMovedEvent e(100, 100);
-		UE_CORE_INFO(e);
-		
-
-
-		while (true);
+		while (m_Running) {
+			m_Window->OnUpdate();
+		}
 	}
 }
