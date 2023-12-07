@@ -161,6 +161,7 @@
     <ClInclude Include="src\UniEngine\Log.h" />
     <ClInclude Include="src\UniEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\UniEngine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\UniEngine\Renderer\Shader.h" />
     <ClInclude Include="src\UniEngine\Window.h" />
     <ClInclude Include="src\UniHeaders.h" />
     <ClInclude Include="src\uepch.h" />
@@ -591,6 +592,7 @@
     <ClCompile Include="src\UniEngine\Layer.cpp" />
     <ClCompile Include="src\UniEngine\LayerStack.cpp" />
     <ClCompile Include="src\UniEngine\Log.cpp" />
+    <ClCompile Include="src\UniEngine\Renderer\Shader.cpp" />
     <ClCompile Include="src\uepch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

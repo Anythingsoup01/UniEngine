@@ -102,6 +102,9 @@
     <ClInclude Include="src\UniEngine\Renderer\GraphicsContext.h">
       <Filter>src\UniEngine\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\UniEngine\Renderer\Shader.h">
+      <Filter>src\UniEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\UniEngine\Window.h">
       <Filter>src\UniEngine</Filter>
     </ClInclude>
@@ -1387,6 +1390,9 @@
     </ClCompile>
     <ClCompile Include="src\UniEngine\Log.cpp">
       <Filter>src\UniEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\Renderer\Shader.cpp">
+      <Filter>src\UniEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\uepch.cpp">
       <Filter>src</Filter>
