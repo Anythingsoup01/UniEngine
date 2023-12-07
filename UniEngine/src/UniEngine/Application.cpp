@@ -11,6 +11,15 @@ namespace UE {
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
+
+	float Point1OffsetX = -4;
+	float Point1OffsetY = 3;
+	float Point2OffsetX = 5;
+	float Point2OffsetY = 4;
+	float Point3OffsetX = 6;
+	float Point3OffsetY = 8;
+
+
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application() 
@@ -29,11 +38,12 @@ namespace UE {
 
 		glGenVertexArrays(1, &m_VertexBuffer);
 		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
-
+		float x = .1f;
 		float vertices[3 * 3] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.0f,	0.5f, 0.0f
+			 (x * Point1OffsetX), (x * Point1OffsetY), x,
+			 (x * Point2OffsetX), (x * Point2OffsetY), x,
+			 (x * Point3OffsetX), (x * Point3OffsetY), x
+			 
 		};
 
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -48,6 +58,8 @@ namespace UE {
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	}
+
+	
 
 	Application::~Application()
 	{
@@ -82,11 +94,12 @@ namespace UE {
 	{
 		while (m_Running)
 		{
-			glClearColor(0, 0, 0, 0);
+			glClearColor(0.05f, 0.05f, 0.05f, 0.05f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			glBindVertexArray(m_VertexArray);
 			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
