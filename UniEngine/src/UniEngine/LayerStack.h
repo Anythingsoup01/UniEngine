@@ -7,7 +7,8 @@
 
 namespace UE {
 
-	class UE_API LayerStack {
+	class UE_API LayerStack
+	{
 	public:
 		LayerStack();
 		~LayerStack();
@@ -23,4 +24,5 @@ namespace UE {
 		std::vector<Layer*> m_Layers;
 		unsigned int m_LayerInsertIndex = 0;
 	};
+
 }

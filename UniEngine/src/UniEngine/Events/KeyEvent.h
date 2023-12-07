@@ -1,11 +1,11 @@
 #pragma once
-#include "uepch.h"
-#include "Events.h"
 
+#include "Event.h"
 
 namespace UE {
-	// Solid
-	class UE_API KeyEvent : public Event {
+
+	class UE_API KeyEvent : public Event
+	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
 
@@ -13,17 +13,20 @@ namespace UE {
 	protected:
 		KeyEvent(int keycode)
 			: m_KeyCode(keycode) {}
+
 		int m_KeyCode;
 	};
-	// Solid
-	class UE_API KeyPressedEvent : public KeyEvent {
+
+	class UE_API KeyPressedEvent : public KeyEvent
+	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 
 		inline int GetRepeatCount() const { return m_RepeatCount; }
 
-		std::string ToString() const override {
+		std::string ToString() const override
+		{
 			std::stringstream ss;
 			ss << "KeyPressedEvent: " << m_KeyCode << " (" << m_RepeatCount << " repeats)";
 			return ss.str();
@@ -33,13 +36,15 @@ namespace UE {
 	private:
 		int m_RepeatCount;
 	};
-	// Solid
-	class UE_API KeyReleasedEvent : public KeyEvent {
+
+	class UE_API KeyReleasedEvent : public KeyEvent
+	{
 	public:
 		KeyReleasedEvent(int keycode)
 			: KeyEvent(keycode) {}
 
-		std::string ToString() const override {
+		std::string ToString() const override
+		{
 			std::stringstream ss;
 			ss << "KeyReleasedEvent: " << m_KeyCode;
 			return ss.str();
@@ -48,12 +53,14 @@ namespace UE {
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class UE_API KeyTypedEvent : public KeyEvent {
+	class UE_API KeyTypedEvent : public KeyEvent
+	{
 	public:
 		KeyTypedEvent(int keycode)
 			: KeyEvent(keycode) {}
 
-		std::string ToString() const override {
+		std::string ToString() const override
+		{
 			std::stringstream ss;
 			ss << "KeyTypedEvent: " << m_KeyCode;
 			return ss.str();

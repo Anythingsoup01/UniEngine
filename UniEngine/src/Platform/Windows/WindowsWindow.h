@@ -1,11 +1,14 @@
 #pragma once
 
 #include "UniEngine/Window.h"
+#include "UniEngine/Renderer/GraphicsContext.h"
 
-#include "GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
 
 namespace UE {
-	class WindowsWindow : public Window {
+
+	class WindowsWindow : public Window
+	{
 	public:
 		WindowsWindow(const WindowProps& props);
 		virtual ~WindowsWindow();
@@ -15,7 +18,7 @@ namespace UE {
 		inline unsigned int GetWidth() const override { return m_Data.Width; }
 		inline unsigned int GetHeight() const override { return m_Data.Height; }
 
-		// Window Attributes
+		// Window attributes
 		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
@@ -26,8 +29,10 @@ namespace UE {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
-		struct WindowData {
+		struct WindowData
+		{
 			std::string Title;
 			unsigned int Width, Height;
 			bool VSync;
@@ -37,4 +42,5 @@ namespace UE {
 
 		WindowData m_Data;
 	};
+
 }

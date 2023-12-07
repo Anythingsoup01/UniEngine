@@ -2,13 +2,14 @@
 
 #include "UniEngine/Layer.h"
 
-#include "UniEngine/Events/ApplicationEvents.h"
-#include "UniEngine/Events/KeyEvents.h"
-#include "UniEngine/Events/MouseEvents.h"
+#include "UniEngine/Events/ApplicationEvent.h"
+#include "UniEngine/Events/KeyEvent.h"
+#include "UniEngine/Events/MouseEvent.h"
 
 namespace UE {
 
-	class UE_API ImGuiLayer : public Layer {
+	class UE_API ImGuiLayer : public Layer
+	{
 	public:
 		ImGuiLayer();
 		~ImGuiLayer();
@@ -16,12 +17,11 @@ namespace UE {
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
 		virtual void OnImGuiRender() override;
+
 		void Begin();
 		void End();
 	private:
 		float m_Time = 0.0f;
-
 	};
 
 }
-

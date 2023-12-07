@@ -1,6 +1,6 @@
-#include "UniHeaders.h"
+#include <UniHeaders.h>
 
-#include "ImGui/imgui.h"
+#include "imgui/imgui.h"
 
 class ExampleLayer : public UE::Layer
 {
@@ -18,9 +18,9 @@ public:
 
 	virtual void OnImGuiRender() override
 	{
-		//ImGui::Begin("Test");
-		//ImGui::Text("Hello World");
-		//ImGui::End();
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(UE::Event& event) override

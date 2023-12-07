@@ -2,24 +2,28 @@
 
 #include "uepch.h"
 
-#include "Core.h"
-
-#include "Events/Events.h"
+#include "UniEngine/Core.h"
+#include "UniEngine/Events/Event.h"
 
 namespace UE {
+
 	struct WindowProps
 	{
 		std::string Title;
 		unsigned int Width;
 		unsigned int Height;
 
-		WindowProps(const std::string& title = "Universal Engine",
-					unsigned int width = 1280,
-					unsigned int height = 720)
-			: Title(title), Width(width), Height(height) {}
+		WindowProps(const std::string& title = "UniEngine Engine",
+			        unsigned int width = 1280,
+			        unsigned int height = 720)
+			: Title(title), Width(width), Height(height)
+		{
+		}
 	};
 
-	class UE_API Window {
+	// Interface representing a desktop system based Window
+	class UE_API Window
+	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
 
@@ -39,4 +43,5 @@ namespace UE {
 
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
+
 }

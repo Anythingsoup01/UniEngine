@@ -23,19 +23,19 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
@@ -54,66 +54,57 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\bin\Debug-windows-x86_64\UniEngine\</OutDir>
     <IntDir>..\bin-int\Debug-windows-x86_64\UniEngine\</IntDir>
     <TargetName>UniEngine</TargetName>
-    <TargetExt>.dll</TargetExt>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\bin\Release-windows-x86_64\UniEngine\</OutDir>
     <IntDir>..\bin-int\Release-windows-x86_64\UniEngine\</IntDir>
     <TargetName>UniEngine</TargetName>
-    <TargetExt>.dll</TargetExt>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
-    <LinkIncremental>false</LinkIncremental>
     <OutDir>..\bin\Dist-windows-x86_64\UniEngine\</OutDir>
     <IntDir>..\bin-int\Dist-windows-x86_64\UniEngine\</IntDir>
     <TargetName>UniEngine</TargetName>
-    <TargetExt>.dll</TargetExt>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>uepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>UE_PLATFORM_WINDOWS;UE_BUILD_DLL;GLFW_INCLUDE_NONE;UE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;UE_PLATFORM_WINDOWS;UE_BUILD_DLL;GLFW_INCLUDE_NONE;UE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ImportLibrary>..\bin\Debug-windows-x86_64\UniEngine\UniEngine.lib</ImportLibrary>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
     </Link>
-    <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\UniEngine\UniEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\UniEngine\UniEngine.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\UniEngine\UniEngine.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul)</Command>
-    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>uepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>UE_PLATFORM_WINDOWS;UE_BUILD_DLL;GLFW_INCLUDE_NONE;UE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;UE_PLATFORM_WINDOWS;UE_BUILD_DLL;GLFW_INCLUDE_NONE;UE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -121,30 +112,24 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ImportLibrary>..\bin\Release-windows-x86_64\UniEngine\UniEngine.lib</ImportLibrary>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
     </Link>
-    <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\UniEngine\UniEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\UniEngine\UniEngine.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\UniEngine\UniEngine.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul)</Command>
-    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>uepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>UE_PLATFORM_WINDOWS;UE_BUILD_DLL;GLFW_INCLUDE_NONE;UE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;UE_PLATFORM_WINDOWS;UE_BUILD_DLL;GLFW_INCLUDE_NONE;UE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -152,27 +137,22 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ImportLibrary>..\bin\Dist-windows-x86_64\UniEngine\UniEngine.lib</ImportLibrary>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
     </Link>
-    <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-x86_64\UniEngine\UniEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\UniEngine\UniEngine.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\UniEngine\UniEngine.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul)</Command>
-    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\UniEngine\Application.h" />
     <ClInclude Include="src\UniEngine\Core.h" />
     <ClInclude Include="src\UniEngine\EntryPoint.h" />
-    <ClInclude Include="src\UniEngine\Events\ApplicationEvents.h" />
-    <ClInclude Include="src\UniEngine\Events\Events.h" />
-    <ClInclude Include="src\UniEngine\Events\KeyEvents.h" />
-    <ClInclude Include="src\UniEngine\Events\MouseEvents.h" />
+    <ClInclude Include="src\UniEngine\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\UniEngine\Events\Event.h" />
+    <ClInclude Include="src\UniEngine\Events\KeyEvent.h" />
+    <ClInclude Include="src\UniEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\UniEngine\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\UniEngine\Input.h" />
     <ClInclude Include="src\UniEngine\KeyCodes.h" />
@@ -180,6 +160,7 @@
     <ClInclude Include="src\UniEngine\LayerStack.h" />
     <ClInclude Include="src\UniEngine\Log.h" />
     <ClInclude Include="src\UniEngine\MouseButtonCodes.h" />
+    <ClInclude Include="src\UniEngine\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\UniEngine\Window.h" />
     <ClInclude Include="src\UniHeaders.h" />
     <ClInclude Include="src\uepch.h" />
@@ -601,6 +582,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\UniEngine\Application.cpp" />
