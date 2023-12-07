@@ -1,12 +1,12 @@
 [submodule "UniEngine/vendor/spdlog"]
 	path = UniEngine/vendor/spdlog
 	url = https://github.com/gabime/spdlog
-[submodule "UniEngine/vendor/GLFW"]
-	path = UniEngine/vendor/GLFW
-	url = https://github.com/Anythingsoup01/glfw
-[submodule "UniEngine/vendor/ImGui"]
-	path = UniEngine/vendor/ImGui
-	url = https://github.com/Anythingsoup01/imgui
 [submodule "UniEngine/vendor/glm"]
 	path = UniEngine/vendor/glm
 	url = https://github.com/g-truc/glm
+[submodule "UniEngine/vendor/ImGui"]
+	path = UniEngine/vendor/ImGui
+	url = https://github.com/anythingsoup01/ImGui
+[submodule "UniEngine/vendor/GLFW"]
+	path = UniEngine/vendor/GLFW
+	url = https://github.com/Anythingsoup01/glfw

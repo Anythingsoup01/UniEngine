@@ -1,9 +1,13 @@
 #pragma once
+
 #include "Core.h"
+
 #include "Window.h"
 #include "LayerStack.h"
 #include "Events/Events.h"
 #include "Events/ApplicationEvents.h"
+
+#include "UniEngine/ImGui/ImGuiLayer.h"
 
 namespace UE {
 	class UE_API Application
@@ -19,13 +23,15 @@ namespace UE {
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
-		inline static Application& Get() { return *s_Instance; }
 
 		inline Window& GetWindow() { return *m_Window; }
+
+		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClosed(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:
