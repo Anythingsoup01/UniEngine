@@ -1358,6 +1358,9 @@
     <ClCompile Include="src\UniEngine\Application.cpp">
       <Filter>src\UniEngine</Filter>
     </ClCompile>
+    <ClCompile Include="src\UniEngine\ImGui\ImGuiBuild.cpp">
+      <Filter>src\UniEngine\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\UniEngine\ImGui\ImGuiLayer.cpp">
       <Filter>src\UniEngine\ImGui</Filter>
     </ClCompile>

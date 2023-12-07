@@ -110,6 +110,7 @@ project "Sandbox"
 	{
 		"UniEngine/vendor/spdlog/include",
 		"UniEngine/src",
+		"UniEngine/vendor",
 		"%{IncludeDir.glm}"
 	}
 

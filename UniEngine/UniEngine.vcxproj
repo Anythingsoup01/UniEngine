@@ -92,6 +92,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Debug-windows-x86_64\UniEngine\UniEngine.lib</ImportLibrary>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
       <Command>IF EXIST ..\bin\Debug-windows-x86_64\UniEngine\UniEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\UniEngine\UniEngine.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\UniEngine\UniEngine.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul)</Command>
@@ -119,6 +123,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Release-windows-x86_64\UniEngine\UniEngine.lib</ImportLibrary>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
       <Command>IF EXIST ..\bin\Release-windows-x86_64\UniEngine\UniEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\UniEngine\UniEngine.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\UniEngine\UniEngine.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul)</Command>
@@ -146,6 +154,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Dist-windows-x86_64\UniEngine\UniEngine.lib</ImportLibrary>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
       <Command>IF EXIST ..\bin\Dist-windows-x86_64\UniEngine\UniEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\UniEngine\UniEngine.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\UniEngine\UniEngine.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul)</Command>
@@ -592,6 +604,7 @@
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\UniEngine\Application.cpp" />
+    <ClCompile Include="src\UniEngine\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\UniEngine\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\UniEngine\Layer.cpp" />
     <ClCompile Include="src\UniEngine\LayerStack.cpp" />
