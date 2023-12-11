@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include "UniEngine/Renderer/VertexArray.h"
+#include "UniEngine/Renderer/Arrays/VertexArray.h"
 
 namespace UE {
 	class OpenGLVertexArray : public VertexArray {

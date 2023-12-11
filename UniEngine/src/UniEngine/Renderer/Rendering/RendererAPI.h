@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 
-#include "VertexArray.h"
+#include "UniEngine/Renderer/Arrays/VertexArray.h"
 
 namespace UE {
 

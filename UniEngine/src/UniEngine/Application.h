@@ -9,9 +9,9 @@
 
 #include "UniEngine/ImGui/ImGuiLayer.h"
 
-#include "Renderer/Shader.h"
-#include "Renderer/Buffer.h"
-#include "Renderer/VertexArray.h"
+#include "Renderer/Shader/Shader.h"
+#include "Renderer/Buffer/Buffer.h"
+#include "Renderer/Arrays/VertexArray.h"
 
 namespace UE {
 
@@ -42,7 +42,6 @@ namespace UE {
 		std::shared_ptr<VertexArray> aa_VertexArray;
 		std::shared_ptr<Shader> as_Shader;
 		std::shared_ptr<Shader> as_BlueShader;
-
 		std::shared_ptr<VertexArray> aa_SquareVA;
 
 	private:

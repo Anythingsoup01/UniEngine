@@ -1,7 +1,7 @@
 #include "uepch.h"
 #include "VertexArray.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
-#include "Renderer.h"
+#include "UniEngine/Renderer/Rendering/Renderer.h"
 
 namespace UE {
 	VertexArray* VertexArray::Create()

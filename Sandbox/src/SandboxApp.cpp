@@ -1,7 +1,9 @@
 #include <UniHeaders.h>
 
-#include "imgui/imgui.h"
+#include "UniEngine/ImGui/ImGuiLayer.h"
 
+
+using namespace UE;
 class ExampleLayer : public UE::Layer
 {
 public:
@@ -12,15 +14,12 @@ public:
 
 	void OnUpdate() override
 	{
-		if (UE::Input::IsKeyPressed(UE_KEY_TAB))
-			UE_TRACE("Tab key is pressed (poll)!");
+		
 	}
 
 	virtual void OnImGuiRender() override
 	{
-		ImGui::Begin("Test");
-		ImGui::Text("Hello World");
-		ImGui::End();
+		
 	}
 
 	void OnEvent(UE::Event& event) override

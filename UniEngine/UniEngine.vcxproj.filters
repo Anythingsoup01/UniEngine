@@ -102,16 +102,16 @@
     <ClInclude Include="src\UniEngine\MouseButtonCodes.h">
       <Filter>src\UniEngine</Filter>
     </ClInclude>
-    <ClInclude Include="src\UniEngine\Renderer\Buffer.h">
+    <ClInclude Include="src\UniEngine\Renderer\Buffer\Buffer.h">
       <Filter>src\UniEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\UniEngine\Renderer\GraphicsContext.h">
+    <ClInclude Include="src\UniEngine\Renderer\Rendering\GraphicsContext.h">
       <Filter>src\UniEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\UniEngine\Renderer\Renderer.h">
+    <ClInclude Include="src\UniEngine\Renderer\Rendering\Renderer.h">
       <Filter>src\UniEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\UniEngine\Renderer\Shader.h">
+    <ClInclude Include="src\UniEngine\Renderer\Shader\Shader.h">
       <Filter>src\UniEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\UniEngine\Window.h">
@@ -1371,10 +1371,10 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\UniEngine\Renderer\VertexArray.h" />
+    <ClInclude Include="src\UniEngine\Renderer\Arrays\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\UniEngine\Renderer\RendererAPI.h" />
-    <ClInclude Include="src\UniEngine\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\UniEngine\Renderer\Rendering\RendererAPI.h" />
+    <ClInclude Include="src\UniEngine\Renderer\Rendering\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
@@ -1408,22 +1408,22 @@
     <ClCompile Include="src\UniEngine\Log.cpp">
       <Filter>src\UniEngine</Filter>
     </ClCompile>
-    <ClCompile Include="src\UniEngine\Renderer\Buffer.cpp">
+    <ClCompile Include="src\UniEngine\Renderer\Buffer\Buffer.cpp">
       <Filter>src\UniEngine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\UniEngine\Renderer\Renderer.cpp">
+    <ClCompile Include="src\UniEngine\Renderer\Rendering\Renderer.cpp">
       <Filter>src\UniEngine\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\UniEngine\Renderer\Shader.cpp">
+    <ClCompile Include="src\UniEngine\Renderer\Shader\Shader.cpp">
       <Filter>src\UniEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\uepch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\UniEngine\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\UniEngine\Renderer\Arrays\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\UniEngine\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\UniEngine\Renderer\RendererCommand.cpp" />
+    <ClCompile Include="src\UniEngine\Renderer\Rendering\RendererAPI.cpp" />
+    <ClCompile Include="src\UniEngine\Renderer\Rendering\RendererCommand.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include "Buffer.h"
+#include "UniEngine/Renderer/Buffer/Buffer.h"
 
 namespace UE {
 	class VertexArray {

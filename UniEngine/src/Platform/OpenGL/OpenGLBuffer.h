@@ -1,6 +1,6 @@
 #pragma once
 
-#include "UniEngine/Renderer/Buffer.h"
+#include "UniEngine/Renderer/Buffer/Buffer.h"
 
 namespace UE {
 

@@ -3,7 +3,7 @@
 
 #include "UniEngine/Log.h"
 
-#include "Renderer/Renderer.h"
+#include "UniEngine/Renderer/Rendering/Renderer.h"
 
 #include "Input.h"
 
@@ -177,7 +177,7 @@ namespace UE {
 
 			Renderer::BeginScene();
 
-			as_BlueShader->Bind();
+			
 			Renderer::Submit(aa_SquareVA);
 
 
