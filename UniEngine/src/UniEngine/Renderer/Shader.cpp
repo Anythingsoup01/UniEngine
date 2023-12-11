@@ -7,12 +7,13 @@ namespace UE
 {
 	Shader::Shader(const std::string& vertexSrc, const std::string& fragmentSrc)
 	{
-			// Create an empty vertex shader handle
-			GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+		// Create an empty vertex shader handle
+		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
 		// Send the vertex shader source code to GL
 		// Note that std::string's .c_str is NULL character terminated.
-		const GLchar* source = (const GLchar*)vertexSrc.c_str();
+		//const GLchar* source = (const GLchar*)vertexSrc.c_str();
+		const GLchar* source = vertexSrc.c_str();
 		glShaderSource(vertexShader, 1, &source, 0);
 
 		// Compile the vertex shader
@@ -71,8 +72,8 @@ namespace UE
 		// Vertex and fragment shaders are successfully compiled.
 		// Now time to link them together into a program.
 		// Get a program object.
-		m_RendererID = glCreateProgram();
-		GLuint program = m_RendererID;
+		s_RendererID = glCreateProgram();
+		GLuint program = s_RendererID;
 
 		// Attach our shaders to our program
 		glAttachShader(program, vertexShader);
@@ -111,12 +112,12 @@ namespace UE
 
 	Shader::~Shader()
 	{
-		glDeleteProgram(m_RendererID);
+		glDeleteProgram(s_RendererID);
 	}
 
 	void Shader::Bind() const
 	{
-		glUseProgram(m_RendererID);
+		glUseProgram(s_RendererID);
 	}
 
 	void Shader::Unbind() const

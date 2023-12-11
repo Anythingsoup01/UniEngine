@@ -48,6 +48,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -99,7 +102,13 @@
     <ClInclude Include="src\UniEngine\MouseButtonCodes.h">
       <Filter>src\UniEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\UniEngine\Renderer\Buffer.h">
+      <Filter>src\UniEngine\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\UniEngine\Renderer\GraphicsContext.h">
+      <Filter>src\UniEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Renderer\Renderer.h">
       <Filter>src\UniEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\UniEngine\Renderer\Shader.h">
@@ -1362,11 +1371,13 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\UniEngine\Renderer\Buffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\UniEngine\Renderer\Renderer.h" />
+    <ClInclude Include="src\UniEngine\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1394,14 +1405,19 @@
     <ClCompile Include="src\UniEngine\Log.cpp">
       <Filter>src\UniEngine</Filter>
     </ClCompile>
+    <ClCompile Include="src\UniEngine\Renderer\Buffer.cpp">
+      <Filter>src\UniEngine\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\Renderer\Renderer.cpp">
+      <Filter>src\UniEngine\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\UniEngine\Renderer\Shader.cpp">
       <Filter>src\UniEngine\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\uepch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\UniEngine\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\UniEngine\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\UniEngine\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
   </ItemGroup>
 </Project>

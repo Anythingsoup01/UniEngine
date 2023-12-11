@@ -9,19 +9,19 @@ namespace UE {
 
 	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
 	{
-		glCreateBuffers(1, &m_RendererID);
-		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
+		glCreateBuffers(1, &b_RendererID);
+		glBindBuffer(GL_ARRAY_BUFFER, b_RendererID);
 		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
 	}
 
 	inline OpenGLVertexBuffer::~OpenGLVertexBuffer() {
-		glDeleteBuffers(1, &m_RendererID);
+		glDeleteBuffers(1, &b_RendererID);
 	}
 
 
 	void OpenGLVertexBuffer::Bind() const
 	{
-		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
+		glBindBuffer(GL_ARRAY_BUFFER, b_RendererID);
 	}
 
 	void OpenGLVertexBuffer::Unbind() const
@@ -35,20 +35,20 @@ namespace UE {
 	//Tracks the Indices
 
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count)
-		: m_Count(count)
+		: b_Count(count)
 	{
-		glCreateBuffers(1, &m_RendererID);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
+		glCreateBuffers(1, &b_RendererID);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, b_RendererID);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(uint32_t), indices, GL_STATIC_DRAW);
 	}
 
 	inline OpenGLIndexBuffer::~OpenGLIndexBuffer() {
-		glDeleteBuffers(1, &m_RendererID);
+		glDeleteBuffers(1, &b_RendererID);
 	}
 
 	void OpenGLIndexBuffer::Bind() const
 	{
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, b_RendererID);
 	}
 
 	void OpenGLIndexBuffer::Unbind() const
