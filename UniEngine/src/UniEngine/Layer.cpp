@@ -4,7 +4,7 @@
 namespace UE {
 
 	Layer::Layer(const std::string& debugName)
-		: m_DebugName(debugName)
+		: z_DebugName(debugName)
 	{
 	}
 

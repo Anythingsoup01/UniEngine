@@ -3,7 +3,7 @@
 
 #include "UniEngine/Log.h"
 
-#include <glad/glad.h>
+#include "Renderer/Renderer.h"
 
 #include "Input.h"
 
@@ -18,27 +18,27 @@ namespace UE {
 	float Point3[2] = {0.0f, 0.5f};
 
 
-	Application* Application::s_Instance = nullptr;
+	Application* Application::a_Instance = nullptr;
 
 
 	Application::Application() 
 	{
-		UE_CORE_ASSERT(!s_Instance, "Application already exists!");
-		s_Instance = this;
+		UE_CORE_ASSERT(!a_Instance, "Application already exists!");
+		a_Instance = this;
 
-		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		aw_Window = std::unique_ptr<Window>(Window::Create());
+		aw_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
-		m_ImGuiLayer = new ImGuiLayer();
-		PushOverlay(m_ImGuiLayer);
+		ag_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(ag_ImGuiLayer);
 		
-		b_VertexArray.reset(VertexArray::Create());
+		aa_VertexArray.reset(VertexArray::Create());
 
 		const int z = 0;
 		float vertices[3 * 7] = {
-			 Point1[0], Point1[1], z, 1.0f, 0.0f, 0.0f, 1.0f,
-			 Point2[0], Point2[1], z, 0.0f, 1.0f, 0.0f, 1.0f,
-			 Point3[0], Point3[1], z, 0.0f, 0.0f, 1.0f, 1.0f
+			 -0.5f, -0.5f, z, 1.0f, 0.0f, 0.0f, 1.0f,
+			 0.5f, -0.5f, z, 0.0f, 1.0f, 0.0f, 1.0f,
+			 0.0f, 0.5f, z, 0.0f, 0.0f, 1.0f, 1.0f
 		};
 
 		std::shared_ptr<VertexBuffer> vertexBuffer;
@@ -49,14 +49,14 @@ namespace UE {
 		};
 
 		vertexBuffer->SetLayout(layout);
-			b_VertexArray->AddVertexBuffer(vertexBuffer);
+			aa_VertexArray->AddVertexBuffer(vertexBuffer);
 		
 		unsigned int indices[3] = { 0, 1, 2 };
 		std::shared_ptr<IndexBuffer> indexBuffer;
 		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
-		b_VertexArray->SetIndexBuffer(indexBuffer);
+		aa_VertexArray->SetIndexBuffer(indexBuffer);
 
-		va_SquareVertexArray.reset(VertexArray::Create());
+		aa_SquareVA.reset(VertexArray::Create());
 
 		float squareVertices[3 * 4] = {
 			-0.5f, -0.5f, z,
@@ -66,11 +66,11 @@ namespace UE {
 		};
 		std::shared_ptr<VertexBuffer> squareVB; squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({ {ShaderDataType::Vector3, "v_Position"} });
-		va_SquareVertexArray->AddVertexBuffer(squareVB);
+		aa_SquareVA->AddVertexBuffer(squareVB);
 
 		unsigned int squareIndices[6] = { 0, 1, 2, 2, 3, 0};
 		std::shared_ptr<IndexBuffer> squareIB; squareIB.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-		va_SquareVertexArray->SetIndexBuffer(squareIB);
+		aa_SquareVA->SetIndexBuffer(squareIB);
 
 
 		std::string vertexSrc = R"(
@@ -104,7 +104,7 @@ namespace UE {
 				color = a_Color;
 			}
 		)";
-		m_Shader.reset(new Shader(vertexSrc, fragmentSrc));
+		as_Shader.reset(new Shader(vertexSrc, fragmentSrc));
 
 		std::string blueVertexSrc = R"(
 			#version 330 core
@@ -133,7 +133,7 @@ namespace UE {
 			}
 		)";
 
-		m_BlueShader.reset(new Shader(blueVertexSrc, blueFragmentSrc));
+		as_BlueShader.reset(new Shader(blueVertexSrc, blueFragmentSrc));
 
 	}
 
@@ -145,13 +145,13 @@ namespace UE {
 
 	void Application::PushLayer(Layer* layer)
 	{
-		m_LayerStack.PushLayer(layer);
+		al_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
-		m_LayerStack.PushOverlay(layer);
+		al_LayerStack.PushOverlay(layer);
 		layer->OnAttach();
 	}
 
@@ -160,7 +160,7 @@ namespace UE {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
+		for (auto it = al_LayerStack.end(); it != al_LayerStack.begin(); )
 		{
 			(*--it)->OnEvent(e);
 			if (e.Handled)
@@ -170,38 +170,39 @@ namespace UE {
 
 	void Application::Run()
 	{
-		while (m_Running)
+		while (ab_Running)
 		{
-			glClearColor(0.05f, 0.05f, 0.05f, 0.05f);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::SetClearColor({ 0.05f, 0.05f, 0.05f, 0.05f });
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
+
+			as_BlueShader->Bind();
+			Renderer::Submit(aa_SquareVA);
 
 
-
-			m_BlueShader->Bind();
-			va_SquareVertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, va_SquareVertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-			m_Shader->Bind();
-			b_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, b_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			as_Shader->Bind();
+			Renderer::Submit(aa_VertexArray);
+			Renderer::EndScene();
 
 
-			for (Layer* layer : m_LayerStack)
+			for (Layer* layer : al_LayerStack)
 				layer->OnUpdate();
 
-			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
+			ag_ImGuiLayer->Begin();
+			for (Layer* layer : al_LayerStack)
 			{
 				layer->OnImGuiRender();
 			}
-			m_ImGuiLayer->End();
+			ag_ImGuiLayer->End();
 
-			m_Window->OnUpdate();
+			aw_Window->OnUpdate();
 		}
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)
 	{
-		m_Running = false;
+		ab_Running = false;
 		return true;
 	}
 

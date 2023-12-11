@@ -17,9 +17,9 @@ namespace UE {
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 
-		inline const std::string& GetName() const { return m_DebugName; }
+		inline const std::string& GetName() const { return z_DebugName; }
 	protected:
-		std::string m_DebugName;
+		std::string z_DebugName;
 	};
 
 }
