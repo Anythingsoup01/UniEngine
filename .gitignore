@@ -2,6 +2,6 @@
 bin/
 bin-int/
 
-*.user
-*.vcxproj
-*.filters
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
