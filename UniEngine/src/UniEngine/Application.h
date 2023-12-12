@@ -13,6 +13,8 @@
 #include "Renderer/Buffer/Buffer.h"
 #include "Renderer/Arrays/VertexArray.h"
 
+#include "Renderer/Camera/OrthographicCamera.h"
+
 namespace UE {
 
 	class UE_API Application
@@ -38,12 +40,6 @@ namespace UE {
 		ImGuiLayer* ag_ImGuiLayer;
 		bool ab_Running = true;
 		LayerStack al_LayerStack;
-
-		std::shared_ptr<VertexArray> aa_VertexArray;
-		std::shared_ptr<Shader> as_Shader;
-		std::shared_ptr<Shader> as_BlueShader;
-		std::shared_ptr<VertexArray> aa_SquareVA;
-
 	private:
 		static Application* a_Instance;
 	};

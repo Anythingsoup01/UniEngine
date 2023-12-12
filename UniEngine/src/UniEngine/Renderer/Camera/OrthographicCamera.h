@@ -24,7 +24,7 @@ namespace UE{
 		glm::mat4 oc_ViewMatrix;
 		glm::mat4 oc_ViewProjectionMatrix;
 
-		glm::vec3 oc_Position;
+		glm::vec3 oc_Position = { 0.0f, 0.0f, 0.0f };
 		float oc_Rotation = 0.0f;
 	};
 }
