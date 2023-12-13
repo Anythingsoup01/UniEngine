@@ -16,6 +16,9 @@
     <Filter Include="src\UniEngine">
       <UniqueIdentifier>{BE98099F-2A59-85D5-F393-CE525F13CAB1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\UniEngine\Core">
+      <UniqueIdentifier>{D6E375BB-C2C7-3611-2B28-3164172B2193}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\UniEngine\Events">
       <UniqueIdentifier>{E242A075-CED1-293F-77F0-3D3A635E3AE5}</UniqueIdentifier>
     </Filter>
@@ -24,6 +27,24 @@
     </Filter>
     <Filter Include="src\UniEngine\Renderer">
       <UniqueIdentifier>{2492B755-108C-E0A7-F9F8-76B8E5914614}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\UniEngine\Renderer\Arrays">
+      <UniqueIdentifier>{45D36068-B1EB-4792-7A98-D72BE66FDC2B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\UniEngine\Renderer\Buffer">
+      <UniqueIdentifier>{8DC3E56A-F9DB-CC94-C288-5C2E2E60612E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\UniEngine\Renderer\Camera">
+      <UniqueIdentifier>{1CD6D46B-88EE-BB95-519B-4B2FBD72502F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\UniEngine\Renderer\Rendering">
+      <UniqueIdentifier>{7158D30E-5DA9-BE50-860D-AD1272BD51BA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\UniEngine\Renderer\Shader">
+      <UniqueIdentifier>{4A719F91-B689-86BB-7F36-1655EB0D1B55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\UniEngine\Renderer\Textures">
+      <UniqueIdentifier>{770C65B3-E3EF-73F3-ECF2-A12F58553A44}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -46,12 +67,27 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
@@ -66,6 +102,9 @@
     <ClInclude Include="src\UniEngine\Core.h">
       <Filter>src\UniEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\UniEngine\Core\TimeStep.h">
+      <Filter>src\UniEngine\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\UniEngine\EntryPoint.h">
       <Filter>src\UniEngine</Filter>
     </ClInclude>
@@ -73,6 +112,9 @@
       <Filter>src\UniEngine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\UniEngine\Events\Event.h">
+      <Filter>src\UniEngine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Events\Events.h">
       <Filter>src\UniEngine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\UniEngine\Events\KeyEvent.h">
@@ -102,17 +144,35 @@
     <ClInclude Include="src\UniEngine\MouseButtonCodes.h">
       <Filter>src\UniEngine</Filter>
     </ClInclude>
+    <ClInclude Include="src\UniEngine\Renderer\Arrays\VertexArray.h">
+      <Filter>src\UniEngine\Renderer\Arrays</Filter>
+    </ClInclude>
     <ClInclude Include="src\UniEngine\Renderer\Buffer\Buffer.h">
+      <Filter>src\UniEngine\Renderer\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Renderer\Camera\OrthographicCamera.h">
+      <Filter>src\UniEngine\Renderer\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Renderer\Renderer.h">
       <Filter>src\UniEngine\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\UniEngine\Renderer\Rendering\GraphicsContext.h">
-      <Filter>src\UniEngine\Renderer</Filter>
+      <Filter>src\UniEngine\Renderer\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Renderer\Rendering\RenderCommand.h">
+      <Filter>src\UniEngine\Renderer\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="src\UniEngine\Renderer\Rendering\Renderer.h">
-      <Filter>src\UniEngine\Renderer</Filter>
+      <Filter>src\UniEngine\Renderer\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Renderer\Rendering\RendererAPI.h">
+      <Filter>src\UniEngine\Renderer\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="src\UniEngine\Renderer\Shader\Shader.h">
-      <Filter>src\UniEngine\Renderer</Filter>
+      <Filter>src\UniEngine\Renderer\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Renderer\Textures\Texture.h">
+      <Filter>src\UniEngine\Renderer\Textures</Filter>
     </ClInclude>
     <ClInclude Include="src\UniEngine\Window.h">
       <Filter>src\UniEngine</Filter>
@@ -1371,22 +1431,27 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\UniEngine\Renderer\Arrays\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\UniEngine\Renderer\Rendering\RendererAPI.h" />
-    <ClInclude Include="src\UniEngine\Renderer\Rendering\RenderCommand.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\UniEngine\Renderer\Camera\OrthographicCamera.h" />
-    <ClInclude Include="src\UniEngine\Events\Events.h" />
-    <ClInclude Include="src\UniEngine\Core\TimeStep.h" />
-    <ClInclude Include="src\UniEngine\Renderer\Renderer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -1413,24 +1478,35 @@
     <ClCompile Include="src\UniEngine\Log.cpp">
       <Filter>src\UniEngine</Filter>
     </ClCompile>
+    <ClCompile Include="src\UniEngine\Renderer\Arrays\VertexArray.cpp">
+      <Filter>src\UniEngine\Renderer\Arrays</Filter>
+    </ClCompile>
     <ClCompile Include="src\UniEngine\Renderer\Buffer\Buffer.cpp">
-      <Filter>src\UniEngine\Renderer</Filter>
+      <Filter>src\UniEngine\Renderer\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\Renderer\Camera\OrthographicCamera.cpp">
+      <Filter>src\UniEngine\Renderer\Camera</Filter>
     </ClCompile>
     <ClCompile Include="src\UniEngine\Renderer\Rendering\Renderer.cpp">
-      <Filter>src\UniEngine\Renderer</Filter>
+      <Filter>src\UniEngine\Renderer\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\Renderer\Rendering\RendererAPI.cpp">
+      <Filter>src\UniEngine\Renderer\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\Renderer\Rendering\RendererCommand.cpp">
+      <Filter>src\UniEngine\Renderer\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="src\UniEngine\Renderer\Shader\Shader.cpp">
-      <Filter>src\UniEngine\Renderer</Filter>
+      <Filter>src\UniEngine\Renderer\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\Renderer\Textures\Texture.cpp">
+      <Filter>src\UniEngine\Renderer\Textures</Filter>
     </ClCompile>
     <ClCompile Include="src\uepch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\UniEngine\Renderer\Arrays\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\UniEngine\Renderer\Rendering\RendererAPI.cpp" />
-    <ClCompile Include="src\UniEngine\Renderer\Rendering\RendererCommand.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\UniEngine\Renderer\Camera\OrthographicCamera.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

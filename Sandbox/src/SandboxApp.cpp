@@ -10,10 +10,10 @@ class ExampleLayer : public UE::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), oc_Camera(-1.6f, 1.6f, -0.9f, 0.9f), cameraPosition(0.0f), cameraRotation(0.0f), squarePos(0.0f)
+		: Layer("Example"), orthoCamera(-1.6f, 1.6f, -0.9f, 0.9f), cameraPosition(0.0f), cameraRotation(0.0f), squarePos(0.0f)
 	{
 
-		aa_VertexArray.reset(UE::VertexArray::Create());
+		vertexArray.reset(UE::VertexArray::Create());
 
 		const int z = 0;
 		float vertices[3 * 7] = {
@@ -22,7 +22,7 @@ public:
 			 0.0f, 0.5f, z, 0.0f, 0.0f, 1.0f, 1.0f
 		};
 
-		std::shared_ptr<UE::VertexBuffer> vertexBuffer;
+		UE::Referance<UE::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(UE::VertexBuffer::Create(vertices, sizeof(vertices)));
 		UE::BufferLayout layout = {
 			{ UE::ShaderDataType::Vector3, "v_Position" },
@@ -30,28 +30,31 @@ public:
 		};
 
 		vertexBuffer->SetLayout(layout);
-		aa_VertexArray->AddVertexBuffer(vertexBuffer);
+		vertexArray->AddVertexBuffer(vertexBuffer);
 
 		unsigned int indices[3] = { 0, 1, 2 };
-		std::shared_ptr<UE::IndexBuffer> indexBuffer;
+		UE::Referance<UE::IndexBuffer> indexBuffer;
 		indexBuffer.reset(UE::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
-		aa_VertexArray->SetIndexBuffer(indexBuffer);
+		vertexArray->SetIndexBuffer(indexBuffer);
 
-		aa_SquareVA.reset(UE::VertexArray::Create());
+		squareVA.reset(UE::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, z,
-			 0.5f, -0.5f, z,
-			 0.5f,  0.5f, z,
-			-0.5f,  0.5f, z
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, z, 0.0f, 0.0f,
+			 0.5f, -0.5f, z, 1.0f, 0.0f,
+			 0.5f,  0.5f, z, 1.0f, 1.0f,
+			-0.5f,  0.5f, z, 0.0f, 1.0f
 		};
-		std::shared_ptr<UE::VertexBuffer> squareVB; squareVB.reset(UE::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-		squareVB->SetLayout({ {UE::ShaderDataType::Vector3, "v_Position"} });
-		aa_SquareVA->AddVertexBuffer(squareVB);
+		UE::Referance<UE::VertexBuffer> squareVB; squareVB.reset(UE::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		squareVB->SetLayout({
+			{UE::ShaderDataType::Vector3, "v_Position"},
+			{UE::ShaderDataType::Vector2, "a_TexCoords"}
+			});
+		squareVA->AddVertexBuffer(squareVB);
 
 		unsigned int squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<UE::IndexBuffer> squareIB; squareIB.reset(UE::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-		aa_SquareVA->SetIndexBuffer(squareIB);
+		UE::Referance<UE::IndexBuffer> squareIB; squareIB.reset(UE::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		squareVA->SetIndexBuffer(squareIB);
 
 
 		std::string vertexSrc = R"(
@@ -90,12 +93,53 @@ public:
 				color = vec4(u_Color, 1.0);
 			}
 		)";
-		as_Shader.reset(UE::Shader::Create(vertexSrc, fragmentSrc));
+		simpleShader.reset(UE::Shader::Create(vertexSrc, fragmentSrc));
+		//==================================================================
+		//Texture Shader ---------------------------------------------------
+		//==================================================================
+		std::string textureShaderVertexSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 v_Position;
+			layout(location = 1) in vec2 v_TexCoord;
+
+			uniform mat4 oc_ViewProjection;
+			uniform mat4 o_Transform;
+
+			out vec2 a_TexCoord;
+
+			void main()
+			{
+				a_TexCoord = v_TexCoord;
+				gl_Position = oc_ViewProjection * o_Transform * vec4(v_Position, 1.0);	
+			}
+		)";
+		std::string textureShaderFragmentSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+
+			in vec2 a_TexCoord;
+			
+			uniform sampler2D u_Texture;
+
+			void main()
+			{
+				color = texture(u_Texture, a_TexCoord);
+			}
+		)";
+
+
+		textureShader.reset(UE::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = (UE::Texture2D::Create("assets/textures/wall.png"));
+
+		std::dynamic_pointer_cast<UE::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<UE::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(UE::TimeStep DeltaTime) override
 	{
-		UE_INFO("DeltaTime: {0}s, {1}ms", DeltaTime, DeltaTime.GetMilliseconds());
 		if (UE::Input::IsKeyPressed(UE_KEY_W)) {
 			cameraPosition.y += cameraMoveSpeed * DeltaTime;
 		}
@@ -140,28 +184,31 @@ public:
 		UE::RenderCommand::SetClearColor({ 0.05f, 0.05f, 0.05f, 0.05f });
 		UE::RenderCommand::Clear();
 
-		oc_Camera.SetPosition(cameraPosition);
-		oc_Camera.SetRotation(cameraRotation);
+		orthoCamera.SetPosition(cameraPosition);
+		orthoCamera.SetRotation(cameraRotation);
 
-		UE::Renderer::BeginScene(oc_Camera);
-
-		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.05f));
+		UE::Renderer::BeginScene(orthoCamera);
 
 		glm::vec4 redColor(0.8f, 0.3f, 0.2f, 1.0f);
 		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
+
+
+		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.05f));
 		
-		std::dynamic_pointer_cast<UE::OpenGLShader>(as_Shader)->Bind();
-		std::dynamic_pointer_cast<UE::OpenGLShader>(as_Shader)->UploadUniformFloat3("u_Color", squareColor);
-		for (int y = 0; y < 5; y++)
+		std::dynamic_pointer_cast<UE::OpenGLShader>(simpleShader)->Bind();
+		std::dynamic_pointer_cast<UE::OpenGLShader>(simpleShader)->UploadUniformFloat3("u_Color", squareColor);
+		for (int y = 0; y < 20; y++)
 		{
-			for (int x = 0; x < 5; x++)
+			for (int x = 0; x < 20; x++)
 			{
 				glm::vec3 pos(x * 0.06f, y * 0.06f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				UE::Renderer::Submit(as_Shader, aa_SquareVA, transform);
+				UE::Renderer::Submit(simpleShader, squareVA, transform);
 			}
 		}
 
+		m_Texture->Bind();
+		UE::Renderer::Submit(textureShader, squareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		UE::Renderer::EndScene();
 
@@ -169,8 +216,16 @@ public:
 
 	virtual void OnImGuiRender() override
 	{
-		ImGui::Begin("Settings");
-		ImGui::ColorEdit3("Square Color", glm::value_ptr(squareColor));
+		ImGui::Begin("Inspector");
+		ImGui::Text("Hello");
+		ImGui::End();
+
+		ImGui::Begin("Assets");
+
+		ImGui::End();
+
+		ImGui::Begin("Hierarchy");
+
 		ImGui::End();
 	}
 
@@ -182,12 +237,16 @@ public:
 	}
 
 private:
-	std::shared_ptr<UE::VertexArray> aa_VertexArray;
-	std::shared_ptr<UE::Shader> as_Shader;
-	std::shared_ptr<UE::Shader> as_BlueShader;
-	std::shared_ptr<UE::VertexArray> aa_SquareVA;
+	UE::Referance<UE::VertexArray> vertexArray;
+	UE::Referance<UE::Shader> simpleShader;
 
-	UE::OrthographicCamera oc_Camera;
+	UE::Referance<UE::Shader> textureShader;
+
+	UE::Referance<UE::Texture2D> m_Texture;
+
+	UE::Referance<UE::VertexArray> squareVA;
+
+	UE::OrthographicCamera orthoCamera;
 
 	glm::vec3 cameraPosition;
 	float cameraMoveSpeed = 1.0f;

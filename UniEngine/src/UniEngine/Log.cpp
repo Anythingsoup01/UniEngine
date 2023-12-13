@@ -5,8 +5,8 @@
 
 namespace UE {
 
-	std::shared_ptr<spdlog::logger> Log::l_CoreLogger;
-	std::shared_ptr<spdlog::logger> Log::l_ClientLogger;
+	Referance<spdlog::logger> Log::l_CoreLogger;
+	Referance<spdlog::logger> Log::l_ClientLogger;
 
 	void Log::Init()
 	{

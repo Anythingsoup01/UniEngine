@@ -11,11 +11,11 @@ namespace UE {
 	public:
 		static void Init();
 
-		inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return l_CoreLogger; }
-		inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return l_ClientLogger; }
+		inline static Referance<spdlog::logger>& GetCoreLogger() { return l_CoreLogger; }
+		inline static Referance<spdlog::logger>& GetClientLogger() { return l_ClientLogger; }
 	private:
-		static std::shared_ptr<spdlog::logger> l_CoreLogger;
-		static std::shared_ptr<spdlog::logger> l_ClientLogger;
+		static Referance<spdlog::logger> l_CoreLogger;
+		static Referance<spdlog::logger> l_ClientLogger;
 	};
 
 }

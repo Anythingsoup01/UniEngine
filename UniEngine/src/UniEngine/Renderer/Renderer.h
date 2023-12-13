@@ -5,3 +5,4 @@
 #include "Rendering/Renderer.h"
 #include "Rendering/RenderCommand.h"
 #include "Shader/Shader.h"
+#include "Textures/Texture.h"

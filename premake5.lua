@@ -17,10 +17,12 @@ IncludeDir["GLFW"] = "UniEngine/vendor/GLFW/include"
 IncludeDir["Glad"] = "UniEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "UniEngine/vendor/imgui"
 IncludeDir["glm"] = "UniEngine/vendor/glm"
+IncludeDir["stb_image"] = "UniEngine/vendor/stb_image"
 
-include "UniEngine/vendor/GLFW"
-include "UniEngine/vendor/Glad"
-include "UniEngine/vendor/imgui"
+group "Dependencies"
+	include "UniEngine/vendor/GLFW"
+	include "UniEngine/vendor/Glad"
+	include "UniEngine/vendor/imgui"
 
 project "UniEngine"
 	location "UniEngine"
@@ -39,6 +41,8 @@ project "UniEngine"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
@@ -55,7 +59,8 @@ project "UniEngine"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links 

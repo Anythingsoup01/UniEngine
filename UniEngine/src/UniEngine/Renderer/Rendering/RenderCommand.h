@@ -11,7 +11,7 @@ namespace UE {
 			r_RendererAPI->Clear();
 		}
 
-		inline static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray) {
+		inline static void DrawIndexed(const Referance<VertexArray>& vertexArray) {
 			r_RendererAPI->DrawIndexed(vertexArray);
 		}
 	private:
