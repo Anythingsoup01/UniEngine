@@ -4,6 +4,10 @@
 namespace UE {
 	class RenderCommand {
 	public:
+		inline static void Init() {
+			r_RendererAPI->Init();
+		}
+
 		inline static void SetClearColor(const glm::vec4& color) {
 			r_RendererAPI->SetClearColor(color);
 		}

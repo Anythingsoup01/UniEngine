@@ -6,6 +6,11 @@ namespace UE {
 
 	Renderer::ScenenData* Renderer::r_SceneData = new Renderer::ScenenData;
 
+	void Renderer::Init()
+	{
+		RenderCommand::Init();
+	}
+
 	void Renderer::BeginScene(OrthographicCamera& camera)
 	{
 		r_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();

@@ -4,10 +4,13 @@
 #include "UniEngine/Renderer/Shader/Shader.h"
 #include <glm/glm.hpp>
 
+typedef unsigned int GLenum;
+
 namespace UE {
 
 	class OpenGLShader : public Shader {
 	public:
+		OpenGLShader(const std::string& path);
 		OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
 		~OpenGLShader();
 
@@ -25,6 +28,10 @@ namespace UE {
 		void UploadUniformInt(const std::string& name, int values);
 		void UploadUniformInt2(const std::string& name, int values[2]);
 		void UploadUniformInt3(const std::string& name, int values[3]);
+	private:
+		std::string ReadFile(const std::string& path);
+		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
+		void Compile(std::unordered_map<GLenum, std::string>& shaderSources);
 	private:
 		uint32_t s_RendererID;
 	};

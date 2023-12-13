@@ -616,6 +616,7 @@
     <ClCompile Include="src\UniEngine\Renderer\Arrays\VertexArray.cpp" />
     <ClCompile Include="src\UniEngine\Renderer\Buffer\Buffer.cpp" />
     <ClCompile Include="src\UniEngine\Renderer\Camera\OrthographicCamera.cpp" />
+    <ClCompile Include="src\UniEngine\Renderer\Rendering\RenderCommand.cpp" />
     <ClCompile Include="src\UniEngine\Renderer\Rendering\Renderer.cpp" />
     <ClCompile Include="src\UniEngine\Renderer\Rendering\RendererAPI.cpp" />
     <ClCompile Include="src\UniEngine\Renderer\Rendering\RendererCommand.cpp" />

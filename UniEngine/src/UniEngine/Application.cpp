@@ -5,6 +5,8 @@
 #include "UniEngine/Log.h"
 #include "Events/Events.h"
 
+#include "Renderer/Renderer.h"
+
 #include "UniEngine/Core/TimeStep.h"
 #include <GLFW/glfw3.h>
 
@@ -25,7 +27,9 @@ namespace UE {
 
 		aw_Window = std::unique_ptr<Window>(Window::Create());
 		aw_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
-		aw_Window->SetVSync(false);
+		
+
+		Renderer::Init();
 
 		ag_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(ag_ImGuiLayer);
