@@ -57,6 +57,7 @@ namespace UE {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
 
 		
 		for (auto it = al_LayerStack.end(); it != al_LayerStack.begin(); )
@@ -75,10 +76,10 @@ namespace UE {
 			float time = (float)glfwGetTime(); // Platform::GetTime()
 			TimeStep timestep = time - ts_LastFrameTime;
 			ts_LastFrameTime = time;
-
-			for (Layer* layer : al_LayerStack)
-				layer->OnUpdate(timestep);
-
+			if (!applicationMinimized) {
+				for (Layer* layer : al_LayerStack)
+					layer->OnUpdate(timestep);
+			}
 			ag_ImGuiLayer->Begin();
 			for (Layer* layer : al_LayerStack)
 			{
@@ -94,6 +95,20 @@ namespace UE {
 	{
 		ab_Running = false;
 		return true;
+	}
+
+	bool Application::OnWindowResize(WindowResizeEvent& e)
+	{
+		if (e.GetWidth() == 0 || e.GetHeight() == 0) {
+			applicationMinimized = true;
+			UE_INFO("Application Minimized!");
+			return false;
+		}
+
+		applicationMinimized = false;
+		Renderer::OnWindowResized(e.GetWidth(), e.GetHeight());
+
+		return false;
 	}
 
 }

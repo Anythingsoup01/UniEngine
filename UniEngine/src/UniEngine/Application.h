@@ -35,11 +35,16 @@ namespace UE {
 		inline static Application& Get() { return *a_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 	private:
 		std::unique_ptr<Window> aw_Window;
+
 		ImGuiLayer* ag_ImGuiLayer;
-		bool ab_Running = true;
 		LayerStack al_LayerStack;
+
+		bool ab_Running = true;
+		bool applicationMinimized = false;
+
 		float ts_LastFrameTime;
 	private:
 		static Application* a_Instance;

@@ -21,6 +21,9 @@ namespace UE {
 		OrthographicCamera& GetCamera() { return m_Camera; }
 		const OrthographicCamera& GetCamera() const { return m_Camera; }
 
+		float GetZoomLevel() const { return zoomLevel; }
+		void SetZoomLevel(float level) { zoomLevel = level; }
+
 	private:
 		bool onMouseScrolled(MouseScrolledEvent& e);
 		bool onWindowResized(WindowResizeEvent& e);

@@ -139,7 +139,7 @@ public:
 	virtual void OnImGuiRender() override
 	{
 		ImGui::Begin("Inspector");
-		ImGui::Text("Hello");
+
 		ImGui::End();
 
 		ImGui::Begin("Assets");

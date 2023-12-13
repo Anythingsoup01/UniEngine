@@ -63,7 +63,9 @@ namespace UE {
 			data.Width = width;
 			data.Height = height;
 
+
 			WindowResizeEvent event(width, height);
+
 			data.EventCallback(event);
 		});
 
