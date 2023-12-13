@@ -10,7 +10,7 @@ class ExampleLayer : public UE::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), orthoCamera(-1.6f, 1.6f, -0.9f, 0.9f), cameraPosition(0.0f), cameraRotation(0.0f), squarePos(0.0f)
+		: Layer("Example"), cameraController(1920.0f / 1080.0f, true)
 	{
 
 		vertexArray.reset(UE::VertexArray::Create());
@@ -105,60 +105,17 @@ public:
 
 	void OnUpdate(UE::TimeStep DeltaTime) override
 	{
-		if (UE::Input::IsKeyPressed(UE_KEY_W)) {
-			cameraPosition.y += cameraMoveSpeed * DeltaTime;
-		}
-		else if (UE::Input::IsKeyPressed(UE_KEY_S)) {
-			cameraPosition.y -= cameraMoveSpeed * DeltaTime;
-		}
-		if (UE::Input::IsKeyPressed(UE_KEY_A)) {
-			cameraPosition.x -= cameraMoveSpeed * DeltaTime;
-		}
-		else if (UE::Input::IsKeyPressed(UE_KEY_D)) {
-			cameraPosition.x += cameraMoveSpeed * DeltaTime;
-		}
+		//Update
+		cameraController.OnUpdate(DeltaTime);
 
-		if (UE::Input::IsMouseButtonPressed(UE_MOUSE_BUTTON_4) && UE::Input::IsKeyPressed(UE_KEY_LEFT_SHIFT)) {
-			cameraRotation -= cameraRotationSpeedCombo * DeltaTime;
-		}
-		else if (UE::Input::IsMouseButtonPressed(UE_MOUSE_BUTTON_5) && UE::Input::IsKeyPressed(UE_KEY_LEFT_SHIFT)) {
-			cameraRotation += cameraRotationSpeedCombo * DeltaTime;
-		}
-
-		else if (UE::Input::IsMouseButtonPressed(UE_MOUSE_BUTTON_4)) {
-			cameraRotation -= cameraRotationSpeed * DeltaTime;
-		}
-		else if (UE::Input::IsMouseButtonPressed(UE_MOUSE_BUTTON_5)) {
-			cameraRotation += cameraRotationSpeed * DeltaTime;
-		}
-		
-		if (UE::Input::IsKeyPressed(UE_KEY_UP)) {
-			squarePos.y += objectMoveSpeed * DeltaTime;
-		}
-		else if (UE::Input::IsKeyPressed(UE_KEY_DOWN)) {
-			squarePos.y -= objectMoveSpeed * DeltaTime;
-		}
-		if (UE::Input::IsKeyPressed(UE_KEY_LEFT)) {
-			squarePos.x -= objectMoveSpeed * DeltaTime;
-		}
-		else if (UE::Input::IsKeyPressed(UE_KEY_RIGHT)) {
-			squarePos.x += objectMoveSpeed * DeltaTime;
-		}
-
-
+		//Render
 		UE::RenderCommand::SetClearColor({ 0.05f, 0.05f, 0.05f, 0.05f });
 		UE::RenderCommand::Clear();
 
-		orthoCamera.SetPosition(cameraPosition);
-		orthoCamera.SetRotation(cameraRotation);
-
-		UE::Renderer::BeginScene(orthoCamera);
-
-		glm::vec4 redColor(0.8f, 0.3f, 0.2f, 1.0f);
-		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
-
+		UE::Renderer::BeginScene(cameraController.GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.05f));
+
 		
 		std::dynamic_pointer_cast<UE::OpenGLShader>(simpleShader)->Bind();
 		std::dynamic_pointer_cast<UE::OpenGLShader>(simpleShader)->UploadUniformFloat3("u_Color", squareColor);
@@ -196,9 +153,7 @@ public:
 
 	void OnEvent(UE::Event& e) override
 	{
-		UE::EventDispatcher dispatcher(e);
-
-
+		cameraController.OnEvent(e);
 	}
 
 private:
@@ -206,23 +161,11 @@ private:
 	UE::Referance<UE::Shader> simpleShader;
 
 	UE::Referance<UE::Shader> textureShader;
+	UE::Referance<UE::VertexArray> squareVA;
 
 	UE::Referance<UE::Texture2D> m_Texture;
 
-	UE::Referance<UE::VertexArray> squareVA;
-
-	UE::OrthographicCamera orthoCamera;
-
-	glm::vec3 cameraPosition;
-	float cameraMoveSpeed = 1.0f;
-
-	float cameraRotation = 0.0f;
-	float cameraRotationSpeed = 25.f;
-	float cameraRotationSpeedCombo = 50.0f;
-
-	glm::vec3 squarePos;
-	float objectMoveSpeed = 100.0f;
-
+	UE::OrthographicCameraController cameraController;
 	glm::vec3 squareColor = { 0.2f, 0.3f, 0.8f };
 };
 

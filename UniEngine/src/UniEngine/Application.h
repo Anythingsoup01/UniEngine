@@ -20,7 +20,7 @@ namespace UE {
 	class UE_API Application
 	{
 	public:
-		Application();
+		UE::Application();
 		virtual ~Application();
 
 		void Run();
@@ -46,6 +46,6 @@ namespace UE {
 	};
 
 	// To be defined in CLIENT
-	Application* CreateApplication();
+	UE::Application* CreateApplication();
 
 }

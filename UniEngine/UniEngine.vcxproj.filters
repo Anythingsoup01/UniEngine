@@ -1434,6 +1434,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\UniEngine\Renderer\Camera\OrthographicCameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1509,5 +1510,6 @@
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
     <ClCompile Include="src\UniEngine\Renderer\Rendering\RenderCommand.cpp" />
+    <ClCompile Include="src\UniEngine\Renderer\Camera\OrthographicCameraController.cpp" />
   </ItemGroup>
 </Project>

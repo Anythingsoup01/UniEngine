@@ -6,9 +6,15 @@
 namespace UE {
 	OrthographicCamera::OrthographicCamera(float left, float right, float bottom, float top)
 		: oc_ProjectionMatrix(glm::ortho(left, right, bottom, top, -1.0f, 1.0f))
-	{
-		
+	{	
 		oc_ViewProjectionMatrix = oc_ProjectionMatrix * oc_ViewMatrix;
+
+	}
+	void OrthographicCamera::SetProjection(float left, float right, float bottom, float top)
+	{
+		oc_ProjectionMatrix = glm::ortho(left, right, bottom, top, -1.0f, 1.0f);
+		oc_ViewProjectionMatrix = oc_ProjectionMatrix * oc_ViewMatrix;
+
 	}
 	void OrthographicCamera::RecalculateViewMatrix()
 	{
