@@ -4,14 +4,14 @@
 #include "UniEngine/Layer.h"
 #include "UniEngine/Log.h"
 #include "UniEngine/ImGui/ImGuiLayer.h"
+#include "UniEngine/Core/TimeStep.h"
 
-#include "UniEngine/Renderer/Arrays/VertexArray.h"
-#include "UniEngine/Renderer/Buffer/Buffer.h"
-#include "UniEngine/Renderer/Camera/OrthographicCamera.h"
-#include "UniEngine/Renderer/Rendering/Renderer.h"
-#include "UniEngine/Renderer/Rendering/RenderCommand.h"
-#include "UniEngine/Renderer/Shader/Shader.h"
+#include "glm/gtc/type_ptr.hpp"
 
+#include "../ImGui/imgui.h"
+#include <glm/gtc/matrix_transform.hpp>
+
+#include "UniEngine/Renderer/Renderer.h"
 
 
 #include "UniEngine/EntryPoint.h"

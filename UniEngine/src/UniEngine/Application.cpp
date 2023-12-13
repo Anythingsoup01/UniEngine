@@ -1,9 +1,12 @@
 #include "uepch.h"
+
+#include "Windows.h"
 #include "Application.h"
-
 #include "UniEngine/Log.h"
-
 #include "Events/Events.h"
+
+#include "UniEngine/Core/TimeStep.h"
+#include <GLFW/glfw3.h>
 
 
 namespace UE {
@@ -22,6 +25,7 @@ namespace UE {
 
 		aw_Window = std::unique_ptr<Window>(Window::Create());
 		aw_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		aw_Window->SetVSync(false);
 
 		ag_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(ag_ImGuiLayer);
@@ -64,8 +68,12 @@ namespace UE {
 	{
 		while (ab_Running)
 		{
+			float time = (float)glfwGetTime(); // Platform::GetTime()
+			TimeStep timestep = time - ts_LastFrameTime;
+			ts_LastFrameTime = time;
+
 			for (Layer* layer : al_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 
 			ag_ImGuiLayer->Begin();
 			for (Layer* layer : al_LayerStack)

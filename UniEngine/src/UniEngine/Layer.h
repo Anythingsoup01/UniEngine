@@ -2,6 +2,7 @@
 
 #include "UniEngine/Core.h"
 #include "UniEngine/Events/Event.h"
+#include "UniEngine/Core/TimeStep.h"
 
 namespace UE {
 
@@ -13,7 +14,7 @@ namespace UE {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(TimeStep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

@@ -1,6 +1,8 @@
 #include <UniHeaders.h>
 
 #include "UniEngine/ImGui/ImGuiLayer.h"
+#include "Platform/OpenGL/OpenGLShader.h"
+
 
 
 
@@ -8,7 +10,7 @@ class ExampleLayer : public UE::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), oc_Camera(-1.6f, 1.6f, -0.9f, 0.9f), cameraPosition(0.0f), cameraRotation(0.0f)
+		: Layer("Example"), oc_Camera(-1.6f, 1.6f, -0.9f, 0.9f), cameraPosition(0.0f), cameraRotation(0.0f), squarePos(0.0f)
 	{
 
 		aa_VertexArray.reset(UE::VertexArray::Create());
@@ -62,12 +64,13 @@ public:
 			out vec4 a_Color;
 
 			uniform mat4 oc_ViewProjection;
+			uniform mat4 o_Transform;
 	
 			void main()
 			{
 			a_Position = v_Position;
 			a_Color = v_Color;
-			gl_Position = oc_ViewProjection * vec4(v_Position, 1.0);
+			gl_Position = oc_ViewProjection * o_Transform * vec4(v_Position, 1.0);
 			}
 		)";
 
@@ -79,78 +82,59 @@ public:
 			in vec3 a_Position;
 			in vec4 a_Color;
 
-			void main()
-			{
-				color = vec4(a_Position * 0.5 + 0.5, 1.0);
-				color = a_Color;
-			}
-		)";
-		as_Shader.reset(new UE::Shader(vertexSrc, fragmentSrc));
-
-		std::string blueVertexSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) in vec3 v_Position;
-			
-			uniform mat4 oc_ViewProjection;
-			
-			out vec3 a_Position;
-	
-			void main()
-			{
-			a_Position = v_Position;
-			gl_Position = oc_ViewProjection * vec4(v_Position, 1.0);
-			}
-		)";
-
-		std::string blueFragmentSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) out vec4 color;
-
-			in vec3 a_Position;
+			uniform vec3 u_Color;
 
 			void main()
 			{
-				color = vec4(a_Position * 0.5 + 0.5, 1.0);
+				
+				color = vec4(u_Color, 1.0);
 			}
 		)";
-
-		as_BlueShader.reset(new UE::Shader(blueVertexSrc, blueFragmentSrc));
-
+		as_Shader.reset(UE::Shader::Create(vertexSrc, fragmentSrc));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(UE::TimeStep DeltaTime) override
 	{
-
+		UE_INFO("DeltaTime: {0}s, {1}ms", DeltaTime, DeltaTime.GetMilliseconds());
 		if (UE::Input::IsKeyPressed(UE_KEY_W)) {
-			cameraPosition.y += cameraMoveSpeed;
+			cameraPosition.y += cameraMoveSpeed * DeltaTime;
 		}
 		else if (UE::Input::IsKeyPressed(UE_KEY_S)) {
-			cameraPosition.y -= cameraMoveSpeed;
+			cameraPosition.y -= cameraMoveSpeed * DeltaTime;
 		}
 		if (UE::Input::IsKeyPressed(UE_KEY_A)) {
-			cameraPosition.x -= cameraMoveSpeed;
+			cameraPosition.x -= cameraMoveSpeed * DeltaTime;
 		}
 		else if (UE::Input::IsKeyPressed(UE_KEY_D)) {
-			cameraPosition.x += cameraMoveSpeed;
+			cameraPosition.x += cameraMoveSpeed * DeltaTime;
 		}
 
 		if (UE::Input::IsMouseButtonPressed(UE_MOUSE_BUTTON_4) && UE::Input::IsKeyPressed(UE_KEY_LEFT_SHIFT)) {
-			cameraRotation -= cameraRotationSpeedCombo;
+			cameraRotation -= cameraRotationSpeedCombo * DeltaTime;
 		}
 		else if (UE::Input::IsMouseButtonPressed(UE_MOUSE_BUTTON_5) && UE::Input::IsKeyPressed(UE_KEY_LEFT_SHIFT)) {
-			cameraRotation += cameraRotationSpeedCombo;
+			cameraRotation += cameraRotationSpeedCombo * DeltaTime;
 		}
 
 		else if (UE::Input::IsMouseButtonPressed(UE_MOUSE_BUTTON_4)) {
-			cameraRotation -= cameraRotationSpeed;
+			cameraRotation -= cameraRotationSpeed * DeltaTime;
 		}
 		else if (UE::Input::IsMouseButtonPressed(UE_MOUSE_BUTTON_5)) {
-			cameraRotation += cameraRotationSpeed;
+			cameraRotation += cameraRotationSpeed * DeltaTime;
 		}
 		
-
+		if (UE::Input::IsKeyPressed(UE_KEY_UP)) {
+			squarePos.y += objectMoveSpeed * DeltaTime;
+		}
+		else if (UE::Input::IsKeyPressed(UE_KEY_DOWN)) {
+			squarePos.y -= objectMoveSpeed * DeltaTime;
+		}
+		if (UE::Input::IsKeyPressed(UE_KEY_LEFT)) {
+			squarePos.x -= objectMoveSpeed * DeltaTime;
+		}
+		else if (UE::Input::IsKeyPressed(UE_KEY_RIGHT)) {
+			squarePos.x += objectMoveSpeed * DeltaTime;
+		}
 
 
 		UE::RenderCommand::SetClearColor({ 0.05f, 0.05f, 0.05f, 0.05f });
@@ -161,8 +145,23 @@ public:
 
 		UE::Renderer::BeginScene(oc_Camera);
 
-		UE::Renderer::Submit(as_BlueShader, aa_SquareVA);
-		UE::Renderer::Submit(as_Shader, aa_VertexArray);
+		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.05f));
+
+		glm::vec4 redColor(0.8f, 0.3f, 0.2f, 1.0f);
+		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
+		
+		std::dynamic_pointer_cast<UE::OpenGLShader>(as_Shader)->Bind();
+		std::dynamic_pointer_cast<UE::OpenGLShader>(as_Shader)->UploadUniformFloat3("u_Color", squareColor);
+		for (int y = 0; y < 5; y++)
+		{
+			for (int x = 0; x < 5; x++)
+			{
+				glm::vec3 pos(x * 0.06f, y * 0.06f, 0.0f);
+				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+				UE::Renderer::Submit(as_Shader, aa_SquareVA, transform);
+			}
+		}
+
 
 		UE::Renderer::EndScene();
 
@@ -170,7 +169,9 @@ public:
 
 	virtual void OnImGuiRender() override
 	{
-		
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit3("Square Color", glm::value_ptr(squareColor));
+		ImGui::End();
 	}
 
 	void OnEvent(UE::Event& e) override
@@ -189,11 +190,16 @@ private:
 	UE::OrthographicCamera oc_Camera;
 
 	glm::vec3 cameraPosition;
-	float cameraMoveSpeed = 0.025f;
+	float cameraMoveSpeed = 1.0f;
 
 	float cameraRotation = 0.0f;
-	float cameraRotationSpeed = .25f;
-	float cameraRotationSpeedCombo = 0.5f;
+	float cameraRotationSpeed = 25.f;
+	float cameraRotationSpeedCombo = 50.0f;
+
+	glm::vec3 squarePos;
+	float objectMoveSpeed = 100.0f;
+
+	glm::vec3 squareColor = { 0.2f, 0.3f, 0.8f };
 };
 
 class Sandbox : public UE::Application

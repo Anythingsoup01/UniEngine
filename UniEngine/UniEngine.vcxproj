@@ -143,6 +143,8 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\UniEngine\Core\TimeStep.h" />
     <ClInclude Include="src\UniEngine\Events\Events.h" />
     <ClInclude Include="src\UniEngine\Renderer\Camera\OrthographicCamera.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
@@ -166,6 +168,7 @@
     <ClInclude Include="src\UniEngine\Log.h" />
     <ClInclude Include="src\UniEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\UniEngine\Renderer\Buffer\Buffer.h" />
+    <ClInclude Include="src\UniEngine\Renderer\Renderer.h" />
     <ClInclude Include="src\UniEngine\Renderer\Rendering\GraphicsContext.h" />
     <ClInclude Include="src\UniEngine\Renderer\Rendering\RenderCommand.h" />
     <ClInclude Include="src\UniEngine\Renderer\Rendering\Renderer.h" />
@@ -593,6 +596,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\UniEngine\Renderer\Camera\OrthographicCamera.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />

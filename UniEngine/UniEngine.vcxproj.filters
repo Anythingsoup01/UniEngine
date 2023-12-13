@@ -1378,6 +1378,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\UniEngine\Renderer\Camera\OrthographicCamera.h" />
     <ClInclude Include="src\UniEngine\Events\Events.h" />
+    <ClInclude Include="src\UniEngine\Core\TimeStep.h" />
+    <ClInclude Include="src\UniEngine\Renderer\Renderer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1428,5 +1431,6 @@
     <ClCompile Include="src\UniEngine\Renderer\Rendering\RendererCommand.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\UniEngine\Renderer\Camera\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
   </ItemGroup>
 </Project>

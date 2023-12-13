@@ -35,11 +35,12 @@ namespace UE {
 		inline static Application& Get() { return *a_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
+	private:
 		std::unique_ptr<Window> aw_Window;
 		ImGuiLayer* ag_ImGuiLayer;
 		bool ab_Running = true;
 		LayerStack al_LayerStack;
+		float ts_LastFrameTime;
 	private:
 		static Application* a_Instance;
 	};
