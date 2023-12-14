@@ -20,6 +20,8 @@ namespace UE {
 		UE_CORE_ASSERT(status, "Failed to initialize Glad!");
 	}
 
+
+
 	void OpenGLContext::SwapBuffers()
 	{
 		glfwSwapBuffers(windowHandle);

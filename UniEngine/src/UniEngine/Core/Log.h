@@ -11,11 +11,11 @@ namespace UE {
 	public:
 		static void Init();
 
-		inline static Referance<spdlog::logger>& GetCoreLogger() { return l_CoreLogger; }
-		inline static Referance<spdlog::logger>& GetClientLogger() { return l_ClientLogger; }
+		inline static Reference<spdlog::logger>& GetCoreLogger() { return l_CoreLogger; }
+		inline static Reference<spdlog::logger>& GetClientLogger() { return l_ClientLogger; }
 	private:
-		static Referance<spdlog::logger> l_CoreLogger;
-		static Referance<spdlog::logger> l_ClientLogger;
+		static Reference<spdlog::logger> l_CoreLogger;
+		static Reference<spdlog::logger> l_ClientLogger;
 	};
 
 }

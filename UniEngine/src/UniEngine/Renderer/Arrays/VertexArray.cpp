@@ -4,12 +4,12 @@
 #include "UniEngine/Renderer/Rendering/Renderer.h"
 
 namespace UE {
-	VertexArray* VertexArray::Create()
+	Reference<VertexArray> VertexArray::Create()
 	{
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:    UE_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::API::OpenGL:  return new OpenGLVertexArray();
+		case RendererAPI::API::OpenGL:  return std::make_shared<OpenGLVertexArray>();
 		}
 
 		UE_CORE_ASSERT(false, "Unknown RendererAPI!");

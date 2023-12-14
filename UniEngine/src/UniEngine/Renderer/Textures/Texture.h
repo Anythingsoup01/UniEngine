@@ -14,7 +14,7 @@ namespace UE {
 
 	class Texture2D : public Texture {
 	public:
-		static Referance<Texture2D> Create(const std::string& path);
+		static Reference<Texture2D> Create(const std::string& path);
 	};
 
 

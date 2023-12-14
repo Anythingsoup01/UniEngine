@@ -5,7 +5,7 @@
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace UE {
-	Referance<Texture2D> Texture2D::Create(const std::string& path)
+	Reference<Texture2D> Texture2D::Create(const std::string& path)
 	{
 		switch (Renderer::GetAPI())
 		{

@@ -12,14 +12,14 @@ namespace UE {
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
 
-		virtual void AddVertexBuffer(const Referance<VertexBuffer>& vertexBuffer) override;
-		virtual void SetIndexBuffer(const Referance<IndexBuffer>& indexBuffer) override;
+		virtual void AddVertexBuffer(const Reference<VertexBuffer>& vertexBuffer) override;
+		virtual void SetIndexBuffer(const Reference<IndexBuffer>& indexBuffer) override;
 
-		virtual const std::vector<Referance<VertexBuffer>>& GetVertexBuffers() const { return vertexBuffer; }
-		virtual const Referance<IndexBuffer>& GetIndexBuffer() const { return indexBuffer; }
+		virtual const std::vector<Reference<VertexBuffer>>& GetVertexBuffers() const { return vertexBuffer; }
+		virtual const Reference<IndexBuffer>& GetIndexBuffer() const { return indexBuffer; }
 	private:
 		uint32_t rendererID;
-		std::vector<Referance<VertexBuffer>> vertexBuffer;
-		Referance<IndexBuffer> indexBuffer;
+		std::vector<Reference<VertexBuffer>> vertexBuffer;
+		Reference<IndexBuffer> indexBuffer;
 	};
 }

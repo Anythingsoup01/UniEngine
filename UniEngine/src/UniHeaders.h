@@ -7,7 +7,6 @@
 #include "UniEngine/Core/Log.h"
 #include "UniEngine/ImGui/ImGuiLayer.h"
 #include "UniEngine/Core/TimeStep.h"
-#include "UniEngine/Core/EntryPoint.h"
 
 //--------Renderer------------------------------------------------------
 #include "UniEngine/Events/ApplicationEvent.h"

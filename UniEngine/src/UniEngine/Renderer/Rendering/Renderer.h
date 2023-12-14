@@ -15,7 +15,7 @@ namespace UE {
 		static void BeginScene(OrthographicCamera& camera);
 		static void EndScene();
 
-		static void Submit(const Referance<Shader> r_Shader, const Referance<VertexArray>& vertexArray, const glm::mat4& transform = glm::mat4(1));
+		static void Submit(const Reference<Shader> r_Shader, const Reference<VertexArray>& vertexArray, const glm::mat4& transform = glm::mat4(1));
 
 		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 	private:

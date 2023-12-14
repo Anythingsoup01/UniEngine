@@ -43,7 +43,7 @@ namespace UE {
 		glBindVertexArray(0);
 	}
 
-	void OpenGLVertexArray::AddVertexBuffer(const Referance<VertexBuffer>& vertexbuffer)
+	void OpenGLVertexArray::AddVertexBuffer(const Reference<VertexBuffer>& vertexbuffer)
 	{
 		UE_CORE_ASSERT(vertexbuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
 
@@ -66,7 +66,7 @@ namespace UE {
 		vertexBuffer.push_back(vertexbuffer);
 	}
 
-	void OpenGLVertexArray::SetIndexBuffer(const Referance<IndexBuffer>& indexbuffer)
+	void OpenGLVertexArray::SetIndexBuffer(const Reference<IndexBuffer>& indexbuffer)
 	{
 		glBindVertexArray(rendererID);
 		indexbuffer->Bind();

@@ -17,7 +17,7 @@
 #include "UniEngine/Core/MouseButtonCodes.h"
 #include "UniEngine/Core/Input.h"
 
-#ifdef UE_PLATFORM_WINDOWS
+#ifdef _WIN64
 #include <Windows.h>
 #endif // UE_PLATFORM_WINDOWS
 

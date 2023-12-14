@@ -11,13 +11,13 @@ namespace UE {
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
 
-		virtual void AddVertexBuffer(const Referance<VertexBuffer>& vertexBuffer) = 0;
-		virtual void SetIndexBuffer(const Referance<IndexBuffer>& indexBuffer) = 0;
+		virtual void AddVertexBuffer(const Reference<VertexBuffer>& vertexBuffer) = 0;
+		virtual void SetIndexBuffer(const Reference<IndexBuffer>& indexBuffer) = 0;
 
-		virtual const std::vector<Referance<VertexBuffer>>& GetVertexBuffers() const = 0;
-		virtual const Referance<IndexBuffer>& GetIndexBuffer() const = 0;
+		virtual const std::vector<Reference<VertexBuffer>>& GetVertexBuffers() const = 0;
+		virtual const Reference<IndexBuffer>& GetIndexBuffer() const = 0;
 
-		static VertexArray* Create();
+		static Reference<VertexArray> Create();
 	private:
 	};
 }

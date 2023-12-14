@@ -1,8 +1,10 @@
 #include <UniHeaders.h>
+#include <UniEngine/Core/EntryPoint.h>
 
 #include "UniEngine/ImGui/ImGuiLayer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
+#include "Sandbox2D.h"
 
 
 
@@ -13,39 +15,39 @@ public:
 		: Layer("Example"), cameraController(1920.0f / 1080.0f, true)
 	{
 
-		vertexArray.reset(UE::VertexArray::Create());
+			vertexArray = UE::VertexArray::Create();
 
-		const int z = 0;
-		float vertices[3 * 7] = {
-			 -0.5f, -0.5f, z, 1.0f, 0.0f, 0.0f, 1.0f,
-			 0.5f, -0.5f, z, 0.0f, 1.0f, 0.0f, 1.0f,
-			 0.0f, 0.5f, z, 0.0f, 0.0f, 1.0f, 1.0f
+			const int z = 0;
+			float vertices[3 * 7] = {
+				 -0.5f, -0.5f, z, 1.0f, 0.0f, 0.0f, 1.0f,
+				 0.5f, -0.5f, z, 0.0f, 1.0f, 0.0f, 1.0f,
+				 0.0f, 0.5f, z, 0.0f, 0.0f, 1.0f, 1.0f
+			};
+
+			UE::Reference<UE::VertexBuffer> vertexBuffer;
+			vertexBuffer.reset(UE::VertexBuffer::Create(vertices, sizeof(vertices)));
+			UE::BufferLayout layout = {
+				{ UE::ShaderDataType::Vector3, "v_Position" },
+				{ UE::ShaderDataType::Vector4, "v_Color" }
+			};
+
+			vertexBuffer->SetLayout(layout);
+			vertexArray->AddVertexBuffer(vertexBuffer);
+
+			unsigned int indices[3] = { 0, 1, 2 };
+			UE::Reference<UE::IndexBuffer> indexBuffer;
+			indexBuffer.reset(UE::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+			vertexArray->SetIndexBuffer(indexBuffer);
+
+		squareVA = UE::VertexArray::Create();
+
+		float squareVertices[3 * 4] = {
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
 		};
-
-		UE::Referance<UE::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(UE::VertexBuffer::Create(vertices, sizeof(vertices)));
-		UE::BufferLayout layout = {
-			{ UE::ShaderDataType::Vector3, "v_Position" },
-			{ UE::ShaderDataType::Vector4, "v_Color" }
-		};
-
-		vertexBuffer->SetLayout(layout);
-		vertexArray->AddVertexBuffer(vertexBuffer);
-
-		unsigned int indices[3] = { 0, 1, 2 };
-		UE::Referance<UE::IndexBuffer> indexBuffer;
-		indexBuffer.reset(UE::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
-		vertexArray->SetIndexBuffer(indexBuffer);
-
-		squareVA.reset(UE::VertexArray::Create());
-
-		float squareVertices[5 * 4] = {
-			-0.5f, -0.5f, z, 0.0f, 0.0f,
-			 0.5f, -0.5f, z, 1.0f, 0.0f,
-			 0.5f,  0.5f, z, 1.0f, 1.0f,
-			-0.5f,  0.5f, z, 0.0f, 1.0f
-		};
-		UE::Referance<UE::VertexBuffer> squareVB; squareVB.reset(UE::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		UE::Reference<UE::VertexBuffer> squareVB; squareVB.reset(UE::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{UE::ShaderDataType::Vector3, "v_Position"},
 			{UE::ShaderDataType::Vector2, "a_TexCoords"}
@@ -53,7 +55,7 @@ public:
 		squareVA->AddVertexBuffer(squareVB);
 
 		unsigned int squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		UE::Referance<UE::IndexBuffer> squareIB; squareIB.reset(UE::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		UE::Reference<UE::IndexBuffer> squareIB; squareIB.reset(UE::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		squareVA->SetIndexBuffer(squareIB);
 
 
@@ -93,9 +95,9 @@ public:
 				color = vec4(u_Color, 1.0);
 			}
 		)";
-		simpleShader.reset(UE::Shader::Create(vertexSrc, fragmentSrc));
+		simpleShader = UE::Shader::Create(vertexSrc, fragmentSrc);
 
-		textureShader.reset(UE::Shader::Create("assets/shaders/Texture.shader"));
+		textureShader = UE::Shader::Create("assets/shaders/Texture.shader");
 
 		m_Texture = (UE::Texture2D::Create("assets/textures/baldursgate.png"));
 
@@ -157,13 +159,13 @@ public:
 	}
 
 private:
-	UE::Referance<UE::VertexArray> vertexArray;
-	UE::Referance<UE::Shader> simpleShader;
+	UE::Reference<UE::VertexArray> vertexArray;
+	UE::Reference<UE::Shader> simpleShader;
 
-	UE::Referance<UE::Shader> textureShader;
-	UE::Referance<UE::VertexArray> squareVA;
+	UE::Reference<UE::Shader> textureShader;
+	UE::Reference<UE::VertexArray> squareVA;
 
-	UE::Referance<UE::Texture2D> m_Texture;
+	UE::Reference<UE::Texture2D> m_Texture;
 
 	UE::OrthographicCameraController cameraController;
 	glm::vec3 squareColor = { 0.2f, 0.3f, 0.8f };
@@ -174,12 +176,12 @@ class Sandbox : public UE::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox()
 	{
-
 	}
 
 };
