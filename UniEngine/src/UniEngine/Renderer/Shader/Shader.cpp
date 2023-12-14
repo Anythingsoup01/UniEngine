@@ -5,7 +5,7 @@
 #include "UniEngine/Renderer/Rendering/Renderer.h"
 
 namespace UE {
-	Reference<Shader> Shader::Create(const std::string& path)
+	Ref<Shader> Shader::Create(const std::string& path)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -16,7 +16,7 @@ namespace UE {
 		UE_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
 	}
-	Reference<Shader> Shader::Create(const std::string& vertexSrc, const std::string& fragmentSrc)
+	Ref<Shader> Shader::Create(const std::string& vertexSrc, const std::string& fragmentSrc)
 	{
 		switch (Renderer::GetAPI())
 		{

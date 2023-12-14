@@ -5,8 +5,8 @@
 
 namespace UE {
 
-	Reference<spdlog::logger> Log::l_CoreLogger;
-	Reference<spdlog::logger> Log::l_ClientLogger;
+	Ref<spdlog::logger> Log::l_CoreLogger;
+	Ref<spdlog::logger> Log::l_ClientLogger;
 
 	void Log::Init()
 	{

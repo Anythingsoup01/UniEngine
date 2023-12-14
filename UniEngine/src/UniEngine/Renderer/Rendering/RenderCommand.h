@@ -18,7 +18,7 @@ namespace UE {
 			rendererAPI->Clear();
 		}
 
-		inline static void DrawIndexed(const Reference<VertexArray>& vertexArray) {
+		inline static void DrawIndexed(const Ref<VertexArray>& vertexArray) {
 			rendererAPI->DrawIndexed(vertexArray);
 		}
 		

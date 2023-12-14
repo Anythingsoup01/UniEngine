@@ -4,7 +4,7 @@
 #include "UniEngine/Renderer/Rendering/Renderer.h"
 
 namespace UE {
-	Reference<VertexArray> VertexArray::Create()
+	Ref<VertexArray> VertexArray::Create()
 	{
 		switch (Renderer::GetAPI())
 		{

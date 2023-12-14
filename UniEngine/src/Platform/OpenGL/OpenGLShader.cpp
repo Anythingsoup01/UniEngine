@@ -55,6 +55,10 @@ namespace UE
 	{
 		UploadUniformFloat4(name, value);
 	}
+	void OpenGLShader::SetInt(const std::string& name, const int value)
+	{
+		UploadUniformInt(name, value);
+	}
 	void OpenGLShader::UploadUniformMat3(const std::string& name, const glm::mat3& matrix)
 	{
 		GLint location = glGetUniformLocation(rendererID, name.c_str());
