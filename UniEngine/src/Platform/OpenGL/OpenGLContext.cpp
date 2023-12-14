@@ -7,22 +7,22 @@
 
 namespace UE {
 
-	OpenGLContext::OpenGLContext(GLFWwindow* windowHandle)
-		: m_WindowHandle(windowHandle)
+	OpenGLContext::OpenGLContext(GLFWwindow* windowhandle)
+		: windowHandle(windowhandle)
 	{
-		UE_CORE_ASSERT(windowHandle, "Window handle is null!")
+		UE_CORE_ASSERT(windowhandle, "Window handle is null!")
 	}
 
 	void OpenGLContext::Init()
 	{
-		glfwMakeContextCurrent(m_WindowHandle);
+		glfwMakeContextCurrent(windowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		UE_CORE_ASSERT(status, "Failed to initialize Glad!");
 	}
 
 	void OpenGLContext::SwapBuffers()
 	{
-		glfwSwapBuffers(m_WindowHandle);
+		glfwSwapBuffers(windowHandle);
 	}
 
 }

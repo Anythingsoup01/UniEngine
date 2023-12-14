@@ -15,7 +15,7 @@ namespace UE {
 		virtual const BufferLayout& GetLayout() const override { return b_Layout; }
 		virtual void SetLayout(const BufferLayout layout) override {b_Layout = layout;}
 	private:
-		uint32_t b_RendererID;
+		uint32_t rendererID;
 		BufferLayout b_Layout;
 	};
 
@@ -26,10 +26,10 @@ namespace UE {
 
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
-		virtual uint32_t GetCount() const { return b_Count; }
+		virtual uint32_t GetCount() const { return Count; }
 	private:
-		uint32_t b_RendererID;
-		uint32_t b_Count;
+		uint32_t rendererID;
+		uint32_t Count;
 	};
 
 }

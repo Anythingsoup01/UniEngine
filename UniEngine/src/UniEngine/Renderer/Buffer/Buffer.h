@@ -61,31 +61,31 @@ namespace UE {
 	public:
 		BufferLayout() {}
 		BufferLayout(const std::initializer_list<BufferElements>& elements)
-			: b_Elements(elements) {CalculateOffsetsAndStride();}
-		inline uint32_t GetStride() const { return b_Stride; }
-		inline const std::vector<BufferElements>& GetElements() const { return b_Elements; }
+			: Elements(elements) {CalculateOffsetsAndStride();}
+		inline uint32_t GetStride() const { return Stride; }
+		inline const std::vector<BufferElements>& GetElements() const { return Elements; }
 
 
-		std::vector<BufferElements>::iterator begin() { return b_Elements.begin(); }
-		std::vector<BufferElements>::iterator end() { return b_Elements.end(); }
-		std::vector<BufferElements>::const_iterator begin() const { return b_Elements.begin(); }
-		std::vector<BufferElements>::const_iterator end() const { return b_Elements.end(); }
+		std::vector<BufferElements>::iterator begin() { return Elements.begin(); }
+		std::vector<BufferElements>::iterator end() { return Elements.end(); }
+		std::vector<BufferElements>::const_iterator begin() const { return Elements.begin(); }
+		std::vector<BufferElements>::const_iterator end() const { return Elements.end(); }
 	private:
 
 		void CalculateOffsetsAndStride()
 		{
 			uint32_t offset = 0;
-			b_Stride = 0;
-			for (auto& element : b_Elements)
+			Stride = 0;
+			for (auto& element : Elements)
 			{
 				element.Offset = offset;
 				offset += element.Size;
-				b_Stride += element.Size;
+				Stride += element.Size;
 			}
 		}
 	private:
-		std::vector<BufferElements> b_Elements;
-		uint32_t b_Stride = 0;
+		std::vector<BufferElements> Elements;
+		uint32_t Stride = 0;
 	};
 
 

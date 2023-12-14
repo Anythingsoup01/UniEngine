@@ -12,10 +12,10 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "UniEngine/Log.h"
-#include "UniEngine/KeyCodes.h"
-#include "UniEngine/MouseButtonCodes.h"
-#include "UniEngine/Input.h"
+#include "UniEngine/Core/Log.h"
+#include "UniEngine/Core/KeyCodes.h"
+#include "UniEngine/Core/MouseButtonCodes.h"
+#include "UniEngine/Core/Input.h"
 
 #ifdef UE_PLATFORM_WINDOWS
 #include <Windows.h>

@@ -143,7 +143,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\UniEngine\Renderer\Camera\OrthographicCameraController.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -152,33 +151,32 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
-    <ClInclude Include="src\UniEngine\Application.h" />
-    <ClInclude Include="src\UniEngine\Core.h" />
+    <ClInclude Include="src\UniEngine\Core\Application.h" />
+    <ClInclude Include="src\UniEngine\Core\Core.h" />
+    <ClInclude Include="src\UniEngine\Core\EntryPoint.h" />
+    <ClInclude Include="src\UniEngine\Core\Input.h" />
+    <ClInclude Include="src\UniEngine\Core\KeyCodes.h" />
+    <ClInclude Include="src\UniEngine\Core\Layer.h" />
+    <ClInclude Include="src\UniEngine\Core\LayerStack.h" />
+    <ClInclude Include="src\UniEngine\Core\Log.h" />
+    <ClInclude Include="src\UniEngine\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\UniEngine\Core\TimeStep.h" />
-    <ClInclude Include="src\UniEngine\EntryPoint.h" />
+    <ClInclude Include="src\UniEngine\Core\Window.h" />
     <ClInclude Include="src\UniEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\UniEngine\Events\Event.h" />
-    <ClInclude Include="src\UniEngine\Events\Events.h" />
     <ClInclude Include="src\UniEngine\Events\KeyEvent.h" />
     <ClInclude Include="src\UniEngine\Events\MouseEvent.h" />
     <ClInclude Include="src\UniEngine\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\UniEngine\Input.h" />
-    <ClInclude Include="src\UniEngine\KeyCodes.h" />
-    <ClInclude Include="src\UniEngine\Layer.h" />
-    <ClInclude Include="src\UniEngine\LayerStack.h" />
-    <ClInclude Include="src\UniEngine\Log.h" />
-    <ClInclude Include="src\UniEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\UniEngine\Renderer\Arrays\VertexArray.h" />
     <ClInclude Include="src\UniEngine\Renderer\Buffer\Buffer.h" />
     <ClInclude Include="src\UniEngine\Renderer\Camera\OrthographicCamera.h" />
-    <ClInclude Include="src\UniEngine\Renderer\Renderer.h" />
+    <ClInclude Include="src\UniEngine\Renderer\Camera\OrthographicCameraController.h" />
     <ClInclude Include="src\UniEngine\Renderer\Rendering\GraphicsContext.h" />
     <ClInclude Include="src\UniEngine\Renderer\Rendering\RenderCommand.h" />
     <ClInclude Include="src\UniEngine\Renderer\Rendering\Renderer.h" />
     <ClInclude Include="src\UniEngine\Renderer\Rendering\RendererAPI.h" />
     <ClInclude Include="src\UniEngine\Renderer\Shader\Shader.h" />
     <ClInclude Include="src\UniEngine\Renderer\Textures\Texture.h" />
-    <ClInclude Include="src\UniEngine\Window.h" />
     <ClInclude Include="src\UniHeaders.h" />
     <ClInclude Include="src\uepch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -600,7 +598,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\UniEngine\Renderer\Camera\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
@@ -609,15 +606,16 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
-    <ClCompile Include="src\UniEngine\Application.cpp" />
+    <ClCompile Include="src\UniEngine\Core\Application.cpp" />
+    <ClCompile Include="src\UniEngine\Core\Layer.cpp" />
+    <ClCompile Include="src\UniEngine\Core\LayerStack.cpp" />
+    <ClCompile Include="src\UniEngine\Core\Log.cpp" />
     <ClCompile Include="src\UniEngine\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\UniEngine\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\UniEngine\Layer.cpp" />
-    <ClCompile Include="src\UniEngine\LayerStack.cpp" />
-    <ClCompile Include="src\UniEngine\Log.cpp" />
     <ClCompile Include="src\UniEngine\Renderer\Arrays\VertexArray.cpp" />
     <ClCompile Include="src\UniEngine\Renderer\Buffer\Buffer.cpp" />
     <ClCompile Include="src\UniEngine\Renderer\Camera\OrthographicCamera.cpp" />
+    <ClCompile Include="src\UniEngine\Renderer\Camera\OrthographicCameraController.cpp" />
     <ClCompile Include="src\UniEngine\Renderer\Rendering\RenderCommand.cpp" />
     <ClCompile Include="src\UniEngine\Renderer\Rendering\Renderer.cpp" />
     <ClCompile Include="src\UniEngine\Renderer\Rendering\RendererAPI.cpp" />

@@ -3,17 +3,17 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "UniEngine/LayerStack.h"
+#include "UniEngine/Core/LayerStack.h"
 #include "UniEngine/Events/Event.h"
 #include "UniEngine/Events/ApplicationEvent.h"
 
 #include "UniEngine/ImGui/ImGuiLayer.h"
 
-#include "Renderer/Shader/Shader.h"
-#include "Renderer/Buffer/Buffer.h"
-#include "Renderer/Arrays/VertexArray.h"
+#include "UniEngine/Renderer/Shader/Shader.h"
+#include "UniEngine/Renderer/Buffer/Buffer.h"
+#include "UniEngine/Renderer/Arrays/VertexArray.h"
 
-#include "Renderer/Camera/OrthographicCamera.h"
+#include "UniEngine/Renderer/Camera/OrthographicCamera.h"
 
 namespace UE {
 

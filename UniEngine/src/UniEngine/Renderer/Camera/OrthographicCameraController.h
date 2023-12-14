@@ -13,13 +13,13 @@ namespace UE {
 	class OrthographicCameraController {
 	public:
 
-		OrthographicCameraController(float aspectRatio, bool rotation = false); // zoom * (aspectRatio * 2 units)
+		OrthographicCameraController(float aspectratio, bool rotation = false);
 
-		void OnUpdate(TimeStep dletaTime);
+		void OnUpdate(TimeStep deltaTime);
 		void OnEvent(Event& e);
 
-		OrthographicCamera& GetCamera() { return m_Camera; }
-		const OrthographicCamera& GetCamera() const { return m_Camera; }
+		OrthographicCamera& GetCamera() { return Camera; }
+		const OrthographicCamera& GetCamera() const { return Camera; }
 
 		float GetZoomLevel() const { return zoomLevel; }
 		void SetZoomLevel(float level) { zoomLevel = level; }
@@ -29,7 +29,7 @@ namespace UE {
 		bool onWindowResized(WindowResizeEvent& e);
 
 	private:
-		float AspectRatio;
+		float aspectRatio;
 		float zoomLevel = 1.0f;
 		float cameraTranslationSpeed = 1.0f, cameraRotationSpeed = 25.0f;
 		float cameraRotation = 0.0f;
@@ -38,7 +38,7 @@ namespace UE {
 
 		bool Rotation = false;
 
-		OrthographicCamera m_Camera;
+		OrthographicCamera Camera;
 	};
 
 };

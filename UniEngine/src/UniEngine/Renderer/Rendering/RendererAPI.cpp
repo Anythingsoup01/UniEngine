@@ -2,5 +2,5 @@
 #include "RendererAPI.h"
 
 namespace UE {
-	RendererAPI::API RendererAPI::r_API = RendererAPI::API::OpenGL;
+	RendererAPI::API RendererAPI::api = RendererAPI::API::OpenGL;
 }

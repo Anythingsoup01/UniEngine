@@ -2,10 +2,9 @@
 
 #include "Windows.h"
 #include "Application.h"
-#include "UniEngine/Log.h"
-#include "Events/Events.h"
-
-#include "Renderer/Renderer.h"
+#include "UniEngine/Core/Log.h"
+#include "UniEngine/Events/Event.h"
+#include "UniEngine/Renderer/Rendering/Renderer.h"
 
 #include "UniEngine/Core/TimeStep.h"
 #include <GLFW/glfw3.h>

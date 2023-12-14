@@ -33,7 +33,7 @@ namespace UE {
 		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
 		void Compile(std::unordered_map<GLenum, std::string>& shaderSources);
 	private:
-		uint32_t s_RendererID;
+		uint32_t rendererID;
 	};
 
 }

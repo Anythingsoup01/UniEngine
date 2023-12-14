@@ -9,12 +9,12 @@ namespace UE {
 	class OpenGLContext : public GraphicsContext
 	{
 	public:
-		OpenGLContext(GLFWwindow* windowHandle);
+		OpenGLContext(GLFWwindow* windowhandle);
 
 		virtual void Init() override;
 		virtual void SwapBuffers() override;
 	private:
-		GLFWwindow* m_WindowHandle;
+		GLFWwindow* windowHandle;
 	};
 
 }

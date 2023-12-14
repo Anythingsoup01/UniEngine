@@ -23,12 +23,12 @@ namespace UE {
 
 		virtual void DrawIndexed(const Referance<VertexArray>& vertexArray) = 0;
 
-		inline static API GetAPI() { return r_API; }
+		inline static API GetAPI() { return api; }
 
 
 
 	private:
-		static API r_API;
+		static API api;
 
 
 	};

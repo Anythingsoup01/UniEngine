@@ -2,7 +2,7 @@
 
 #include "uepch.h"
 
-#include "UniEngine/Core.h"
+#include "UniEngine/Core/Core.h"
 #include "UniEngine/Events/Event.h"
 
 namespace UE {

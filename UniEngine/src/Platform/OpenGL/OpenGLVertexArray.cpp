@@ -25,17 +25,17 @@ namespace UE {
 
 	OpenGLVertexArray::OpenGLVertexArray()
 	{
-		glCreateVertexArrays(1, &b_RendererID);
+		glCreateVertexArrays(1, &rendererID);
 	}
 
 	OpenGLVertexArray::~OpenGLVertexArray()
 	{
-		glDeleteVertexArrays(1, &b_RendererID);
+		glDeleteVertexArrays(1, &rendererID);
 	}
 
 	void OpenGLVertexArray::Bind() const
 	{
-		glBindVertexArray(b_RendererID);
+		glBindVertexArray(rendererID);
 	}
 
 	void OpenGLVertexArray::Unbind() const
@@ -43,15 +43,15 @@ namespace UE {
 		glBindVertexArray(0);
 	}
 
-	void OpenGLVertexArray::AddVertexBuffer(const Referance<VertexBuffer>& vertexBuffer)
+	void OpenGLVertexArray::AddVertexBuffer(const Referance<VertexBuffer>& vertexbuffer)
 	{
-		UE_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
+		UE_CORE_ASSERT(vertexbuffer->GetLayout().GetElements().size(), "Vertex Buffer has no layout!");
 
-		glBindVertexArray(b_RendererID);
-		vertexBuffer->Bind();
+		glBindVertexArray(rendererID);
+		vertexbuffer->Bind();
 
 		uint32_t index = 0;
-		const auto& layout = vertexBuffer->GetLayout();
+		const auto& layout = vertexbuffer->GetLayout();
 		for (const auto& element : layout)
 		{
 			glEnableVertexAttribArray(index);
@@ -63,15 +63,15 @@ namespace UE {
 				(const void*)element.Offset);
 			index++;
 		}
-		b_VertexBuffers.push_back(vertexBuffer);
+		vertexBuffer.push_back(vertexbuffer);
 	}
 
-	void OpenGLVertexArray::SetIndexBuffer(const Referance<IndexBuffer>& indexBuffer)
+	void OpenGLVertexArray::SetIndexBuffer(const Referance<IndexBuffer>& indexbuffer)
 	{
-		glBindVertexArray(b_RendererID);
-		indexBuffer->Bind();
+		glBindVertexArray(rendererID);
+		indexbuffer->Bind();
 
-		b_IndexBuffer = indexBuffer;
+		indexBuffer = indexbuffer;
 	}
 
 }

@@ -10,25 +10,25 @@ namespace UE{
 
 		void SetProjection(float left, float right, float bottom, float top);
 
-		const glm::vec3& GetPosition() const { return oc_Position; }
-		void SetPosition(const glm::vec3& position) { oc_Position = position; RecalculateViewMatrix(); }
+		const glm::vec3& GetPosition() const { return Position; }
+		void SetPosition(const glm::vec3& position) { Position = position; RecalculateViewMatrix(); }
 
-		float GetRotation() const { return oc_Rotation; }
-		void SetRotation(float rotation) { oc_Rotation = rotation; RecalculateViewMatrix(); }
+		float GetRotation() const { return Rotation; }
+		void SetRotation(float rotation) { Rotation = rotation; RecalculateViewMatrix(); }
 
 
-		const glm::mat4& GetProjectionMatrix() const { return oc_ProjectionMatrix; }
-		const glm::mat4& GetViewMatrix() const { return oc_ViewMatrix; }
-		const glm::mat4& GetViewProjectionMatrix() const { return oc_ViewProjectionMatrix; }
+		const glm::mat4& GetProjectionMatrix() const { return projectionMatrix; }
+		const glm::mat4& GetViewMatrix() const { return viewMatrix; }
+		const glm::mat4& GetViewProjectionMatrix() const { return viewProjectionMatrix; }
 	private:
 		void RecalculateViewMatrix();
 	private:
-		glm::mat4 oc_ProjectionMatrix;
-		glm::mat4 oc_ViewMatrix;
-		glm::mat4 oc_ViewProjectionMatrix;
+		glm::mat4 projectionMatrix;
+		glm::mat4 viewMatrix;
+		glm::mat4 viewProjectionMatrix;
 
-		glm::vec3 oc_Position = { 0.0f, 0.0f, 0.0f };
-		float oc_Rotation = 0.0f;
+		glm::vec3 Position = { 0.0f, 0.0f, 0.0f };
+		float Rotation = 0.0f;
 	};
 }
 

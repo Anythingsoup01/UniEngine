@@ -96,25 +96,43 @@
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\UniEngine\Application.h">
-      <Filter>src\UniEngine</Filter>
+    <ClInclude Include="src\UniEngine\Core\Application.h">
+      <Filter>src\UniEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\UniEngine\Core.h">
-      <Filter>src\UniEngine</Filter>
+    <ClInclude Include="src\UniEngine\Core\Core.h">
+      <Filter>src\UniEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Core\EntryPoint.h">
+      <Filter>src\UniEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Core\Input.h">
+      <Filter>src\UniEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Core\KeyCodes.h">
+      <Filter>src\UniEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Core\Layer.h">
+      <Filter>src\UniEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Core\LayerStack.h">
+      <Filter>src\UniEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Core\Log.h">
+      <Filter>src\UniEngine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UniEngine\Core\MouseButtonCodes.h">
+      <Filter>src\UniEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\UniEngine\Core\TimeStep.h">
       <Filter>src\UniEngine\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\UniEngine\EntryPoint.h">
-      <Filter>src\UniEngine</Filter>
+    <ClInclude Include="src\UniEngine\Core\Window.h">
+      <Filter>src\UniEngine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\UniEngine\Events\ApplicationEvent.h">
       <Filter>src\UniEngine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\UniEngine\Events\Event.h">
-      <Filter>src\UniEngine\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UniEngine\Events\Events.h">
       <Filter>src\UniEngine\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\UniEngine\Events\KeyEvent.h">
@@ -126,24 +144,6 @@
     <ClInclude Include="src\UniEngine\ImGui\ImGuiLayer.h">
       <Filter>src\UniEngine\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\UniEngine\Input.h">
-      <Filter>src\UniEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UniEngine\KeyCodes.h">
-      <Filter>src\UniEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UniEngine\Layer.h">
-      <Filter>src\UniEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UniEngine\LayerStack.h">
-      <Filter>src\UniEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UniEngine\Log.h">
-      <Filter>src\UniEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UniEngine\MouseButtonCodes.h">
-      <Filter>src\UniEngine</Filter>
-    </ClInclude>
     <ClInclude Include="src\UniEngine\Renderer\Arrays\VertexArray.h">
       <Filter>src\UniEngine\Renderer\Arrays</Filter>
     </ClInclude>
@@ -153,8 +153,8 @@
     <ClInclude Include="src\UniEngine\Renderer\Camera\OrthographicCamera.h">
       <Filter>src\UniEngine\Renderer\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="src\UniEngine\Renderer\Renderer.h">
-      <Filter>src\UniEngine\Renderer</Filter>
+    <ClInclude Include="src\UniEngine\Renderer\Camera\OrthographicCameraController.h">
+      <Filter>src\UniEngine\Renderer\Camera</Filter>
     </ClInclude>
     <ClInclude Include="src\UniEngine\Renderer\Rendering\GraphicsContext.h">
       <Filter>src\UniEngine\Renderer\Rendering</Filter>
@@ -173,9 +173,6 @@
     </ClInclude>
     <ClInclude Include="src\UniEngine\Renderer\Textures\Texture.h">
       <Filter>src\UniEngine\Renderer\Textures</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UniEngine\Window.h">
-      <Filter>src\UniEngine</Filter>
     </ClInclude>
     <ClInclude Include="src\UniHeaders.h">
       <Filter>src</Filter>
@@ -1434,7 +1431,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\UniEngine\Renderer\Camera\OrthographicCameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1461,23 +1457,23 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\UniEngine\Application.cpp">
-      <Filter>src\UniEngine</Filter>
+    <ClCompile Include="src\UniEngine\Core\Application.cpp">
+      <Filter>src\UniEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\Core\Layer.cpp">
+      <Filter>src\UniEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\Core\LayerStack.cpp">
+      <Filter>src\UniEngine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\Core\Log.cpp">
+      <Filter>src\UniEngine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\UniEngine\ImGui\ImGuiBuild.cpp">
       <Filter>src\UniEngine\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\UniEngine\ImGui\ImGuiLayer.cpp">
       <Filter>src\UniEngine\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\UniEngine\Layer.cpp">
-      <Filter>src\UniEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\UniEngine\LayerStack.cpp">
-      <Filter>src\UniEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\UniEngine\Log.cpp">
-      <Filter>src\UniEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\UniEngine\Renderer\Arrays\VertexArray.cpp">
       <Filter>src\UniEngine\Renderer\Arrays</Filter>
@@ -1487,6 +1483,12 @@
     </ClCompile>
     <ClCompile Include="src\UniEngine\Renderer\Camera\OrthographicCamera.cpp">
       <Filter>src\UniEngine\Renderer\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\Renderer\Camera\OrthographicCameraController.cpp">
+      <Filter>src\UniEngine\Renderer\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UniEngine\Renderer\Rendering\RenderCommand.cpp">
+      <Filter>src\UniEngine\Renderer\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="src\UniEngine\Renderer\Rendering\Renderer.cpp">
       <Filter>src\UniEngine\Renderer\Rendering</Filter>
@@ -1509,7 +1511,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\UniEngine\Renderer\Rendering\RenderCommand.cpp" />
-    <ClCompile Include="src\UniEngine\Renderer\Camera\OrthographicCameraController.cpp" />
   </ItemGroup>
 </Project>

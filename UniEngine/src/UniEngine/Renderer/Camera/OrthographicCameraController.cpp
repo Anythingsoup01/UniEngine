@@ -3,8 +3,8 @@
 
 
 namespace UE {
-	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation)
-		: AspectRatio(aspectRatio), m_Camera(-aspectRatio * zoomLevel, aspectRatio * zoomLevel, -zoomLevel, zoomLevel), Rotation(rotation)
+	OrthographicCameraController::OrthographicCameraController(float aspectratio, bool rotation)
+		: aspectRatio(aspectratio), Camera(-aspectRatio * zoomLevel, aspectRatio * zoomLevel, -zoomLevel, zoomLevel), Rotation(rotation)
 	{
 
 	}
@@ -31,10 +31,10 @@ namespace UE {
 			if (UE::Input::IsMouseButtonPressed(UE_MOUSE_BUTTON_5)) {
 				cameraRotation += cameraRotationSpeed * deltaTime;
 			}
-			m_Camera.SetRotation(cameraRotation);
+			Camera.SetRotation(cameraRotation);
 		}
 		cameraTranslationSpeed = zoomLevel;
-		m_Camera.SetPosition(cameraPosition);
+		Camera.SetPosition(cameraPosition);
 	}
 	void OrthographicCameraController::OnEvent(Event& e)
 	{
@@ -46,13 +46,13 @@ namespace UE {
 	{
 		zoomLevel -= e.GetYOffset() * 0.05;
 		zoomLevel = std::max(zoomLevel, 0.25f);
-		m_Camera.SetProjection(-AspectRatio * zoomLevel, AspectRatio * zoomLevel, -zoomLevel, zoomLevel);
+		Camera.SetProjection(-aspectRatio * zoomLevel, aspectRatio * zoomLevel, -zoomLevel, zoomLevel);
 		return false;
 	}
 	bool OrthographicCameraController::onWindowResized(WindowResizeEvent& e)
 	{
-		AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
-		m_Camera.SetProjection(-AspectRatio * zoomLevel, AspectRatio * zoomLevel, -zoomLevel, zoomLevel);
+		aspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
+		Camera.SetProjection(-aspectRatio * zoomLevel, aspectRatio * zoomLevel, -zoomLevel, zoomLevel);
 		return false;
 	}
 };

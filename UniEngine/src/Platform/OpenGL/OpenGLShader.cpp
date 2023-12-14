@@ -31,12 +31,12 @@ namespace UE
 
 	OpenGLShader::~OpenGLShader()
 	{
-		glDeleteProgram(s_RendererID);
+		glDeleteProgram(rendererID);
 	}
 
 	void OpenGLShader::Bind() const
 	{
-		glUseProgram(s_RendererID);
+		glUseProgram(rendererID);
 	}
 
 	void OpenGLShader::Unbind() const
@@ -45,51 +45,51 @@ namespace UE
 	}
 	void OpenGLShader::UploadUniformMat3(const std::string& name, const glm::mat3& matrix)
 	{
-		GLint location = glGetUniformLocation(s_RendererID, name.c_str());
+		GLint location = glGetUniformLocation(rendererID, name.c_str());
 		glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 	void OpenGLShader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix)
 	{
-		GLint location = glGetUniformLocation(s_RendererID, name.c_str());
+		GLint location = glGetUniformLocation(rendererID, name.c_str());
 		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 
 	}
 	void OpenGLShader::UploadUniformFloat(const std::string& name, const float value)
 	{
-		GLint location = glGetUniformLocation(s_RendererID, name.c_str());
+		GLint location = glGetUniformLocation(rendererID, name.c_str());
 		glUniform1f(location, value);
 	}
 	void OpenGLShader::UploadUniformFloat2(const std::string& name, const glm::vec2& values)
 	{
-		GLint location = glGetUniformLocation(s_RendererID, name.c_str());
+		GLint location = glGetUniformLocation(rendererID, name.c_str());
 		glUniform2f(location, values.x, values.y);
 	}
 	void OpenGLShader::UploadUniformFloat3(const std::string& name, const glm::vec3& values)
 	{
-		GLint location = glGetUniformLocation(s_RendererID, name.c_str());
+		GLint location = glGetUniformLocation(rendererID, name.c_str());
 		glUniform3f(location, values.x, values.y, values.z);
 	}
 	void OpenGLShader::UploadUniformFloat4(const std::string& name, const glm::vec4& values)
 	{
-		GLint location = glGetUniformLocation(s_RendererID, name.c_str());
+		GLint location = glGetUniformLocation(rendererID, name.c_str());
 		glUniform4f(location, values.x, values.y, values.z, values.w);
 	}
 
 	void OpenGLShader::UploadUniformInt(const std::string& name, int value)
 	{
-		GLint location = glGetUniformLocation(s_RendererID, name.c_str());
+		GLint location = glGetUniformLocation(rendererID, name.c_str());
 		glUniform1i(location, value);
 	}
 
 	void OpenGLShader::UploadUniformInt2(const std::string& name, int values[2])
 	{
-		GLint location = glGetUniformLocation(s_RendererID, name.c_str());
+		GLint location = glGetUniformLocation(rendererID, name.c_str());
 		glUniform2i(location, values[0], values[1]);
 	}
 
 	void OpenGLShader::UploadUniformInt3(const std::string& name, int values[3])
 	{
-		GLint location = glGetUniformLocation(s_RendererID, name.c_str());
+		GLint location = glGetUniformLocation(rendererID, name.c_str());
 		glUniform3i(location, values[0], values[1], values[2]);
 	}
 	std::string OpenGLShader::ReadFile(const std::string& path)
@@ -192,7 +192,7 @@ namespace UE
 
 		for (auto id : glShaderIDs)
 			glDetachShader(program, id);
-		s_RendererID = program;
+		rendererID = program;
 
 	}
 }

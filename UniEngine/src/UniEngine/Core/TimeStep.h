@@ -4,14 +4,14 @@ namespace UE {
 	class TimeStep {
 	public:
 		TimeStep(float time) 
-			: ts_Time(time)
+			: Time(time)
 		{
 		}
-		operator float() const { return ts_Time; }
+		operator float() const { return Time; }
 
-		float GetSeconds() const { return ts_Time; }
-		float GetMilliseconds() const { return ts_Time * 1000.0f; }
+		float GetSeconds() const { return Time; }
+		float GetMilliseconds() const { return Time * 1000.0f; }
 	private:
-		float ts_Time;
+		float Time;
 	};
 }

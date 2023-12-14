@@ -1,7 +1,7 @@
 #pragma once
 
 #include "uepch.h"
-#include "UniEngine/Core.h"
+#include "UniEngine/Core/Core.h"
 
 
 namespace UE {
@@ -58,22 +58,22 @@ namespace UE {
 		using EventFn = std::function<bool(T&)>;
 	public:
 		EventDispatcher(Event& event)
-			: m_Event(event)
+			: Event(event)
 		{
 		}
 
 		template<typename T>
 		bool Dispatch(EventFn<T> func)
 		{
-			if (m_Event.GetEventType() == T::GetStaticType())
+			if (Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.Handled = func(*(T*)&m_Event);
+				Event.Handled = func(*(T*)&Event);
 				return true;
 			}
 			return false;
 		}
 	private:
-		Event& m_Event;
+		Event& Event;
 	};
 
 	inline std::ostream& operator<<(std::ostream& os, const Event& e)

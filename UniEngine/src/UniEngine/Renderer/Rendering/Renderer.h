@@ -20,9 +20,9 @@ namespace UE {
 		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 	private:
 		struct ScenenData {
-			glm::mat4 ViewProjectionMatrix;
+			glm::mat4 viewProjectionMatrix;
 		};
-		static ScenenData* r_SceneData;
+		static ScenenData* sceneData;
 	};
 
 }

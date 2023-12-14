@@ -4,7 +4,7 @@
 
 namespace UE {
 
-	Renderer::ScenenData* Renderer::r_SceneData = new Renderer::ScenenData;
+	Renderer::ScenenData* Renderer::sceneData = new Renderer::ScenenData;
 
 	void Renderer::Init()
 	{
@@ -18,7 +18,7 @@ namespace UE {
 
 	void Renderer::BeginScene(OrthographicCamera& camera)
 	{
-		r_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
+		sceneData->viewProjectionMatrix = camera.GetViewProjectionMatrix();
 	}
 	void Renderer::EndScene()
 	{
@@ -27,7 +27,7 @@ namespace UE {
 	void Renderer::Submit(const Referance<Shader> shader, const Referance<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
 		shader->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("oc_ViewProjection", r_SceneData->ViewProjectionMatrix);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("oc_ViewProjection", sceneData->viewProjectionMatrix);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("o_Transform", transform);
 
 		vertexArray->Bind();

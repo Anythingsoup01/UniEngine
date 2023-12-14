@@ -1,6 +1,6 @@
 #pragma once
 
-#include "UniEngine/Layer.h"
+#include "UniEngine/Core/Layer.h"
 
 #include "UniEngine/Events/ApplicationEvent.h"
 #include "UniEngine/Events/KeyEvent.h"
@@ -21,7 +21,7 @@ namespace UE {
 		void Begin();
 		void End();
 	private:
-		float m_Time = 0.0f;
+		float Time = 0.0f;
 	};
 
 }
