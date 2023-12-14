@@ -23,6 +23,7 @@
 #include "UniEngine/Renderer/Rendering/GraphicsContext.h"
 #include "UniEngine/Renderer/Rendering/RenderCommand.h"
 #include "UniEngine/Renderer/Rendering/Renderer.h"
+#include "UniEngine/Renderer/Rendering/Renderer2D.h"
 #include "UniEngine/Renderer/Rendering/RendererAPI.h"
 #include "UniEngine/Renderer/Shader/Shader.h"
 #include "UniEngine/Renderer/Textures/Texture.h"

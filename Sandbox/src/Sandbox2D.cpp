@@ -2,6 +2,7 @@
 #include "UniHeaders.h"
 
 #include "Platform/OpenGL/OpenGLShader.h"
+#include "UniEngine/Renderer/Rendering/Renderer2D.h"
 
 Sandbox2D::Sandbox2D()
 	: Layer("Sandbox2D"), cameraController(1920.0f / 1080.0f, true)
@@ -11,26 +12,6 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
-	squareVA = UE::VertexArray::Create();
-
-	float squareVertices[3 * 4] = {
-		-0.5f, -0.5f, 0.0f, 
-		 0.5f, -0.5f, 0.0f, 
-		 0.5f,  0.5f, 0.0f, 
-		-0.5f,  0.5f, 0.0f
-	};
-	UE::Reference<UE::VertexBuffer> squareVB; squareVB.reset(UE::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-	squareVB->SetLayout({
-		{UE::ShaderDataType::Vector3, "v_Position"}
-		});
-	squareVA->AddVertexBuffer(squareVB);
-
-	unsigned int squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-	UE::Reference<UE::IndexBuffer> squareIB; squareIB.reset(UE::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-	squareVA->SetIndexBuffer(squareIB);
-
-
-	Shader = UE::Shader::Create("assets/shaders/Shader.Shader");
 
 }
 
@@ -49,15 +30,12 @@ void Sandbox2D::OnUpdate(UE::TimeStep DeltaTime)
 	UE::RenderCommand::SetClearColor({ 0.05f, 0.05f, 0.05f, 0.05f });
 	UE::RenderCommand::Clear();
 
-	UE::Renderer::BeginScene(cameraController.GetCamera());
+	UE::Renderer2D::BeginScene(cameraController.GetCamera());
 
-	std::dynamic_pointer_cast<UE::OpenGLShader>(Shader)->Bind();
-	std::dynamic_pointer_cast<UE::OpenGLShader>(Shader)->UploadUniformFloat4("u_Color", squareColor);
-
-	UE::Renderer::Submit(Shader, squareVA, glm::mat4(1.0f));
-
-	UE::Renderer::EndScene();
-
+	UE::Renderer2D::DrawQuad({ 0.0f, 0.0f }, { 1.0f,1.0f }, squareColor);
+	
+	UE::Renderer2D::EndScene();
+// Todo - Add the functions: Shader::SetMat4, Shader::SetFloat4
 }
 
 

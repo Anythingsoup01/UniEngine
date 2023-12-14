@@ -76,7 +76,6 @@ project "UniEngine"
 
 		defines
 		{
-			"UE_PLATFORM_WINDOWS",
 			"UE_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}

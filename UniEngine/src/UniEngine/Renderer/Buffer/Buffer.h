@@ -32,7 +32,7 @@ namespace UE {
 		uint32_t Size;
 		bool Normalized;
 
-		BufferElements() {}
+		BufferElements() = default;
 
 		BufferElements(ShaderDataType type, const std::string& name, bool normalized = false)
 			: Name(name), Type(type), Size(ShaderDataTypeSize(type)), Offset(0), Normalized(normalized) {}

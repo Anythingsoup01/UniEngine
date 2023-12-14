@@ -1,6 +1,7 @@
 #include "uepch.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 #include "Renderer.h"
+#include "Renderer2D.h"
 
 namespace UE {
 
@@ -9,6 +10,7 @@ namespace UE {
 	void Renderer::Init()
 	{
 		RenderCommand::Init();
+		Renderer2D::Init();
 	}
 
 	void Renderer::OnWindowResized(uint32_t width, uint32_t height)
@@ -27,8 +29,8 @@ namespace UE {
 	void Renderer::Submit(const Reference<Shader> shader, const Reference<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
 		shader->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("oc_ViewProjection", sceneData->viewProjectionMatrix);
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("o_Transform", transform);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", sceneData->viewProjectionMatrix);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", transform);
 
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);

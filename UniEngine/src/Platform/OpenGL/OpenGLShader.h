@@ -20,10 +20,14 @@ namespace UE {
 		void UploadUniformMat3(const std::string& name, const glm::mat3& matrix);
 		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
 
+		void SetMat4(const std::string& name, const glm::mat4& matrix);
+
 		void UploadUniformFloat(const std::string& name, const float values);
 		void UploadUniformFloat2(const std::string& name, const glm::vec2& values);
 		void UploadUniformFloat3(const std::string& name, const glm::vec3& values);
 		void UploadUniformFloat4(const std::string& name, const glm::vec4& values);
+
+		void SetFloat4(const std::string&, const glm::vec4& values);
 
 		void UploadUniformInt(const std::string& name, int values);
 		void UploadUniformInt2(const std::string& name, int values[2]);

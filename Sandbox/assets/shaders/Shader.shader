@@ -1,14 +1,14 @@
 #type vertex
 	#version 330 core
 	
-	layout(location = 0) in vec3 v_Position;
+	layout(location = 0) in vec3 a_Position;
 
-	uniform mat4 oc_ViewProjection;
-	uniform mat4 o_Transform;
+	uniform mat4 u_ViewProjection;
+	uniform mat4 u_Transform;
 
 	void main()
 	{
-		gl_Position = oc_ViewProjection * o_Transform * vec4(v_Position, 1.0);	
+		gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
 	}
 
 #type fragment
